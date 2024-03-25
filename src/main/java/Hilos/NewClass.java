@@ -9,5 +9,6 @@ package Hilos;
  * @author danic
  */
 public class NewClass {
-    
+    System.out
+            
 }
