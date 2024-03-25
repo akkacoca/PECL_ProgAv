@@ -15,4 +15,3 @@ public class Autobus extends Thread{
         while (true) {
         }
     }
-}
