@@ -162,6 +162,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -669,11 +672,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TransferAeropuertoTextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TransferAeropuertoTextFieldMActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TransferCiudadTextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TransferCiudadTextFieldMActionPerformed"/>
       </Events>
@@ -684,6 +693,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="PasajerosTextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PasajerosTextFieldMActionPerformed"/>
       </Events>
@@ -699,11 +711,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="HangarTextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HangarTextFieldMActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TallerTextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">
       <Properties>
@@ -711,6 +729,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="EstacionamientoTextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EstacionamientoTextFieldMActionPerformed"/>
       </Events>
@@ -721,11 +742,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Gate1TextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Gate1TextFieldMActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Gate2TextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Gate2TextFieldMActionPerformed"/>
       </Events>
@@ -741,6 +768,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Gate3TextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Gate3TextFieldMActionPerformed"/>
       </Events>
@@ -751,11 +781,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Gate4TextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Gate4TextFieldMActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Gate5TextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Gate5TextFieldMActionPerformed"/>
       </Events>
@@ -771,6 +807,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Gate6TextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Gate6TextFieldMActionPerformed"/>
       </Events>
@@ -781,6 +820,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="RodajeTextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel29">
       <Properties>
@@ -788,6 +830,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Pista1TextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel30">
       <Properties>
@@ -795,6 +840,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Pista2TextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel31">
       <Properties>
@@ -802,6 +850,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Pista3TextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel32">
       <Properties>
@@ -809,6 +860,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Pista4TextFieldM">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel43">
       <Properties>
@@ -816,16 +870,25 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Gate6TextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Gate6TextFieldBActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TransferAeropuertoTextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TransferAeropuertoTextFieldBActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TransferCiudadTextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TransferCiudadTextFieldBActionPerformed"/>
       </Events>
@@ -836,6 +899,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="PasajerosTextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PasajerosTextFieldBActionPerformed"/>
       </Events>
@@ -846,6 +912,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="RodajeTextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel46">
       <Properties>
@@ -858,6 +927,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="HangarTextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HangarTextFieldBActionPerformed"/>
       </Events>
@@ -868,8 +940,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TallerTextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Pista1TextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel49">
       <Properties>
@@ -877,6 +955,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Pista2TextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel50">
       <Properties>
@@ -889,11 +970,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="EstacionamientoTextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EstacionamientoTextFieldBActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Pista3TextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel52">
       <Properties>
@@ -901,6 +988,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Pista4TextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel53">
       <Properties>
@@ -908,11 +998,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Gate1TextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Gate1TextFieldBActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Gate2TextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Gate2TextFieldBActionPerformed"/>
       </Events>
@@ -928,6 +1024,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Gate3TextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Gate3TextFieldBActionPerformed"/>
       </Events>
@@ -957,11 +1056,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Gate4TextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Gate4TextFieldBActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Gate5TextFieldB">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Gate5TextFieldBActionPerformed"/>
       </Events>
@@ -978,6 +1083,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="AeroviaMBTextField">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -986,6 +1094,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="AeroviaBMTextField">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

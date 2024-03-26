@@ -7,9 +7,13 @@ import java.util.ArrayList;
 
 public class Pantalla extends javax.swing.JFrame {
 
-    public Pantalla() {
-        // Configuración de la ventana
-
+    private final Paso paso;
+    private boolean parado;
+    
+    public Pantalla(Paso paso) {
+        this.paso = paso;
+        parado = false;
+        initComponents();
     }
 
     public JTextField getAeroviaBMTextField() {return AeroviaBMTextField;}
@@ -269,6 +273,11 @@ public class Pantalla extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         BotonParar.setText("Parar");
         BotonParar.addActionListener(new java.awt.event.ActionListener() {
@@ -292,12 +301,14 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel4.setText("Transfers Ciudad:");
 
+        TransferAeropuertoTextFieldM.setEditable(false);
         TransferAeropuertoTextFieldM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TransferAeropuertoTextFieldMActionPerformed(evt);
             }
         });
 
+        TransferCiudadTextFieldM.setEditable(false);
         TransferCiudadTextFieldM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TransferCiudadTextFieldMActionPerformed(evt);
@@ -306,6 +317,7 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel7.setText("Nº de pasageros en el aeropuerto: ");
 
+        PasajerosTextFieldM.setEditable(false);
         PasajerosTextFieldM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PasajerosTextFieldMActionPerformed(evt);
@@ -316,14 +328,18 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel10.setText("Taller:");
 
+        HangarTextFieldM.setEditable(false);
         HangarTextFieldM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HangarTextFieldMActionPerformed(evt);
             }
         });
 
+        TallerTextFieldM.setEditable(false);
+
         jLabel13.setText("Área Estacionamiento: ");
 
+        EstacionamientoTextFieldM.setEditable(false);
         EstacionamientoTextFieldM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EstacionamientoTextFieldMActionPerformed(evt);
@@ -332,12 +348,14 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel15.setText("Gate 1:");
 
+        Gate1TextFieldM.setEditable(false);
         Gate1TextFieldM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Gate1TextFieldMActionPerformed(evt);
             }
         });
 
+        Gate2TextFieldM.setEditable(false);
         Gate2TextFieldM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Gate2TextFieldMActionPerformed(evt);
@@ -348,6 +366,7 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel17.setText("Gate 3:");
 
+        Gate3TextFieldM.setEditable(false);
         Gate3TextFieldM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Gate3TextFieldMActionPerformed(evt);
@@ -356,12 +375,14 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel18.setText("Gate 4:");
 
+        Gate4TextFieldM.setEditable(false);
         Gate4TextFieldM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Gate4TextFieldMActionPerformed(evt);
             }
         });
 
+        Gate5TextFieldM.setEditable(false);
         Gate5TextFieldM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Gate5TextFieldMActionPerformed(evt);
@@ -372,6 +393,7 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel20.setText("Gate 6:");
 
+        Gate6TextFieldM.setEditable(false);
         Gate6TextFieldM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Gate6TextFieldMActionPerformed(evt);
@@ -380,28 +402,41 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel27.setText("Área Rodaje:");
 
+        RodajeTextFieldM.setEditable(false);
+
         jLabel29.setText("Pista 1:");
+
+        Pista1TextFieldM.setEditable(false);
 
         jLabel30.setText("Pista 2:");
 
+        Pista2TextFieldM.setEditable(false);
+
         jLabel31.setText("Pista 3:");
+
+        Pista3TextFieldM.setEditable(false);
 
         jLabel32.setText("Pista 4:");
 
+        Pista4TextFieldM.setEditable(false);
+
         jLabel43.setText("Gate 6:");
 
+        Gate6TextFieldB.setEditable(false);
         Gate6TextFieldB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Gate6TextFieldBActionPerformed(evt);
             }
         });
 
+        TransferAeropuertoTextFieldB.setEditable(false);
         TransferAeropuertoTextFieldB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TransferAeropuertoTextFieldBActionPerformed(evt);
             }
         });
 
+        TransferCiudadTextFieldB.setEditable(false);
         TransferCiudadTextFieldB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TransferCiudadTextFieldBActionPerformed(evt);
@@ -410,6 +445,7 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel44.setText("Nº de pasageros en el aeropuerto: ");
 
+        PasajerosTextFieldB.setEditable(false);
         PasajerosTextFieldB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PasajerosTextFieldBActionPerformed(evt);
@@ -418,10 +454,13 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel45.setText("Área Rodaje:");
 
+        RodajeTextFieldB.setEditable(false);
+
         jLabel46.setText("Hangar:");
 
         jLabel47.setText("Taller:");
 
+        HangarTextFieldB.setEditable(false);
         HangarTextFieldB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HangarTextFieldBActionPerformed(evt);
@@ -430,28 +469,41 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel48.setText("Pista 1:");
 
+        TallerTextFieldB.setEditable(false);
+
+        Pista1TextFieldB.setEditable(false);
+
         jLabel49.setText("Pista 2:");
+
+        Pista2TextFieldB.setEditable(false);
 
         jLabel50.setText("Área Estacionamiento: ");
 
         jLabel51.setText("Pista 3:");
 
+        EstacionamientoTextFieldB.setEditable(false);
         EstacionamientoTextFieldB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EstacionamientoTextFieldBActionPerformed(evt);
             }
         });
 
+        Pista3TextFieldB.setEditable(false);
+
         jLabel52.setText("Pista 4:");
+
+        Pista4TextFieldB.setEditable(false);
 
         jLabel53.setText("Gate 1:");
 
+        Gate1TextFieldB.setEditable(false);
         Gate1TextFieldB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Gate1TextFieldBActionPerformed(evt);
             }
         });
 
+        Gate2TextFieldB.setEditable(false);
         Gate2TextFieldB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Gate2TextFieldBActionPerformed(evt);
@@ -462,6 +514,7 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel55.setText("Gate 3:");
 
+        Gate3TextFieldB.setEditable(false);
         Gate3TextFieldB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Gate3TextFieldBActionPerformed(evt);
@@ -478,12 +531,14 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel59.setText("Gate 4:");
 
+        Gate4TextFieldB.setEditable(false);
         Gate4TextFieldB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Gate4TextFieldBActionPerformed(evt);
             }
         });
 
+        Gate5TextFieldB.setEditable(false);
         Gate5TextFieldB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Gate5TextFieldBActionPerformed(evt);
@@ -495,8 +550,12 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Aeriovía Madird-Barcelona");
 
+        AeroviaMBTextField.setEditable(false);
+
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Aeriovía Barcelona-Madrid");
+
+        AeroviaBMTextField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -853,11 +912,15 @@ public class Pantalla extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPararActionPerformed
-        // TODO add your handling code here:
+        /*escritor.escribir("SISTEMA DETENIDO");*/
+        paso.cerrar();
+        parado = true;
     }//GEN-LAST:event_BotonPararActionPerformed
 
     private void BotonReanudarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReanudarActionPerformed
-        // TODO add your handling code here:
+        /*escritor.escribir("SISTEMA REANUDADO");*/
+        paso.abrir();
+        parado = false;
     }//GEN-LAST:event_BotonReanudarActionPerformed
 
     private void TransferAeropuertoTextFieldMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransferAeropuertoTextFieldMActionPerformed
@@ -992,40 +1055,13 @@ public class Pantalla extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Gate5TextFieldBActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        /*escritor.cerrarEscritor();*/
+    }//GEN-LAST:event_formWindowClosing
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Pantalla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Pantalla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Pantalla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Pantalla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Pantalla().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AeroviaBMTextField;
