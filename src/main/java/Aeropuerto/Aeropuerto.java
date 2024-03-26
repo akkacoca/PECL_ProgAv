@@ -4,8 +4,10 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.ArrayList;
 
+import Hilos.Avion;
 public class Aeropuerto {
     private String nombre;
+    private int pasajeros;
     private Hangar hangar;
     private Taller taller;
     private ArrayList<PuertaEmbarque> puertasEmbarque;
@@ -40,7 +42,23 @@ public class Aeropuerto {
         this.lockPuertas = new ReentrantLock();
         this.lockPistas = new ReentrantLock();
     }
-
+    
+    public void entrarpasajeros(int pasajeros){
+        this.pasajeros += pasajeros;
+    }
+    
+    public void salirpasajeros(int pasajeros){
+        this.pasajeros -= pasajeros;
+    }
+    
+    public void pasarHangar(Avion avion){
+        this.hangar.entrar(avion);
+    }
+    
+    public void pasarArea(Avion avion){
+        this.areaEstacionamiento.entrar(avion);
+    }
+    
     public void asignarPuertaEmbarque(int numeroPuerta) {
         try {
             lockPuertas.lock();

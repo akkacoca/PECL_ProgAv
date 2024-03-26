@@ -15,14 +15,10 @@ public class Avion extends Thread {
     @Override
     public void run() {
         while (true) {
-            try {
-                Thread.sleep(randomInterval(1000, 3000)); // Intervalo de creación escalonada
-                despegar();
-                Thread.sleep(randomInterval(15000, 30000)); // Duración del vuelo
-                aterrizar();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            //se genera el avion en el hangar
+            aeropuerto.pasarHangar(this);
+            //el avion pasa a el area de estacionamiento
+            aeropuerto.pasarArea(this);
         }
     }
 
@@ -34,10 +30,5 @@ public class Avion extends Thread {
     private void aterrizar() {
         System.out.println("Avion " + id + " aterrizando.");
         // Lógica para el aterrizaje del avión
-    }
-
-    private int randomInterval(int min, int max) {
-        Random rand = new Random();
-        return rand.nextInt(max - min + 1) + min;
     }
 }

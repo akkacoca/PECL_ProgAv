@@ -5,9 +5,6 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * @author Abel
- */
 public class Paso {
     
     private boolean cerrado;

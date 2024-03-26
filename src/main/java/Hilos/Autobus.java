@@ -2,44 +2,50 @@ package Hilos;
 
 import Aeropuerto.Aeropuerto;
 import java.util.Random;
+import Main.Paso;
 
 public class Autobus extends Thread {
     private String id;
     private Aeropuerto aeropuerto;
+    private Paso paso;
+    private int pasajeros;
+    private Random r;
 
-    public Autobus(String id, Aeropuerto aeropuerto) {
+    public Autobus(String id, Aeropuerto aeropuerto, Paso paso) {
         this.id = id;
         this.aeropuerto = aeropuerto;
+        this.paso = paso;
     }
 
     @Override
     public void run() {
         while (true) {
             try {
-                Thread.sleep(randomInterval(500, 1000)); // Intervalo de creación escalonada
-                llevarPasajeros();
-                Thread.sleep(randomInterval(2000, 5000)); // Tiempo en espera antes de volver
-                traerPasajeros();
+                paso.mirar();
+                
+                //Llegada a la parada de la ciudad
+                Thread.sleep(r.nextInt(3001) + 2000);
+                //suben pasajeros
+                pasajeros = r.nextInt(51);
+                //viaje al aeropuerto
+                Thread.sleep(r.nextInt(5001) + 5000);
+                //dejar pasajeros en el aeropuerto
+                aeropuerto.entrarpasajeros(pasajeros);
+                pasajeros = 0;
+                //espera a que suban pasajeros en el aeropuerto
+                Thread.sleep(r.nextInt(3001) + 2000);
+                //suben pasajeros en el aeropuerto
+                pasajeros = r.nextInt(51);
+                aeropuerto.salirpasajeros(pasajeros);
+                //viaje a la ciudad
+                Thread.sleep(r.nextInt(5001) + 5000);
+                pasajeros = 0;
+                
+                
+                
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-    }
-
-    private void llevarPasajeros() {
-        int numPasajeros = randomInterval(0, 50);
-        System.out.println("Autobus " + id + " llega a la ciudad para llevar " + numPasajeros + " pasajeros.");
-        // Lógica para llevar pasajeros al aeropuerto
-    }
-
-    private void traerPasajeros() {
-        int numPasajeros = randomInterval(0, 50);
-        System.out.println("Autobus " + id + " llega al aeropuerto para traer " + numPasajeros + " pasajeros.");
-        // Lógica para traer pasajeros desde el aeropuerto
-    }
-
-    private int randomInterval(int min, int max) {
-        Random rand = new Random();
-        return rand.nextInt(max - min + 1) + min;
     }
 }
