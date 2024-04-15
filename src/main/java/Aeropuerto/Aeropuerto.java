@@ -24,9 +24,11 @@ public class Aeropuerto {
         this.taller = new Taller();
         this.puertasEmbarque = new ArrayList<>();
         // Inicializar puertas de embarque
-        for (int i = 0; i < 6; i++) {
-            puertasEmbarque.add(new PuertaEmbarque(i + 1));
+        for (int i = 0; i < 4; i++) {
+            puertasEmbarque.add(new PuertaEmbarque(i + 1, "general", this));
         }
+        puertasEmbarque.add(new PuertaEmbarque(5, "embarque", this));
+        puertasEmbarque.add(new PuertaEmbarque(6, "desembarque", this));
         this.pistas = new ArrayList<>();
         // Inicializar pistas
         for (int i = 0; i < 4; i++) {
@@ -42,6 +44,11 @@ public class Aeropuerto {
         this.lockPuertas = new ReentrantLock();
         this.lockPistas = new ReentrantLock();
     }
+
+    public int getPasajeros() {
+        return pasajeros;
+    }
+    
     
     public void entrarpasajeros(int pasajeros){
         this.pasajeros += pasajeros;
@@ -59,18 +66,18 @@ public class Aeropuerto {
         this.areaEstacionamiento.entrar(avion);
     }
     
-    public void asignarPuertaEmbarque(int numeroPuerta) {
-        try {
-            lockPuertas.lock();
-            for (PuertaEmbarque puerta : puertasEmbarque) {
-                if (puerta.getNumero() == numeroPuerta) {
-                    puerta.asignar();
-                    System.out.println("Puerta de embarque " + numeroPuerta + " asignada.");
-                    break;
+    public void accederPuertaEmbarque(Avion avion) {
+        for (PuertaEmbarque puerta : puertasEmbarque) {
+            if ((puerta.getTipo().equals("general") || puerta.getTipo().equals(avion.getTipoOperacion())) && (!puerta.isOcupada() || puerta.getTipo().equals(avion.getTipoOperacion()))) {
+                try {
+                    puerta.solicitarAcceso(avion);
+                    System.out.println("Avion " + avion.getId() + " accede a la Puerta de Embarque " + puerta.getNumero());
+                    return;
+                } catch (InterruptedException e) {
+                    // Manejar la interrupción si es necesario
+                    e.printStackTrace();
                 }
             }
-        } finally {
-            lockPuertas.unlock();
         }
     }
 
@@ -79,7 +86,7 @@ public class Aeropuerto {
             lockPuertas.lock();
             for (PuertaEmbarque puerta : puertasEmbarque) {
                 if (puerta.getNumero() == numeroPuerta) {
-                    puerta.liberar();
+                    puerta.liberarAcceso();
                     System.out.println("Puerta de embarque " + numeroPuerta + " liberada.");
                     break;
                 }

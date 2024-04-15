@@ -10,7 +10,6 @@ public class Hangar {
         this.aviones = new ArrayList<>();
     }
     
-    
     public void entrar(Avion avion){
         aviones.add(avion);
     }
