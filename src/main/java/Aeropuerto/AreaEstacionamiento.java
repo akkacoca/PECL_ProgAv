@@ -11,6 +11,6 @@ public class AreaEstacionamiento {
     }
     
     public void entrar(Avion avion){
-        aviones.add(avion);
+        aviones.add(avion); 
     }
 }
