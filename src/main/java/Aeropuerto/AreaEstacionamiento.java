@@ -13,5 +13,8 @@ public class AreaEstacionamiento {
     public void entrar(Avion avion){
         aviones.add(avion); 
     }
+    public void salir(Avion avion){
+        aviones.remove(avion); 
+    }
 }
    

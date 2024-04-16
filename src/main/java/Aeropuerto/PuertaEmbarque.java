@@ -47,6 +47,7 @@ public class PuertaEmbarque {
                 condition.await();
             }
             ocupada = true;
+            colaEspera.remove(avion);
         } finally {
             lock.unlock();
         }
@@ -66,14 +67,14 @@ public class PuertaEmbarque {
         Random random = new Random();
         int intentos = 0;
         while (avion.getPasajeros() < avion.getCapacidadMax() && intentos < 3) {
-            // Simulamos la espera para embarcar más pasajeros
-            Thread.sleep(random.nextInt(5000) + 1000);
             // Transferencia de pasajeros al avión
             int pasajerosTransferidos = Math.min(avion.getCapacidadMax() - avion.getPasajeros(), aeropuerto.getPasajeros());
             avion.embarcarPasajeros(pasajerosTransferidos);
             aeropuerto.salirpasajeros(pasajerosTransferidos);
             // Simulamos el tiempo de embarque
             Thread.sleep(random.nextInt(3000) + 1000);
+            // Simulamos la espera para embarcar más pasajeros
+            Thread.sleep(random.nextInt(5000) + 1000);
             intentos++;
         }
     }

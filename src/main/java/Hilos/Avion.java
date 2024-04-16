@@ -3,14 +3,17 @@ package Hilos;
 import Aeropuerto.Aeropuerto;
 import Aeropuerto.PuertaEmbarque;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Avion extends Thread {
     private String id;
     private Aeropuerto aeropuerto;
-    private String TipoOperacion;  // embarque/desembarque
+    public String TipoOperacion;  // embarque/desembarque
     private int pasajeros;
     private int capacidadMax;
     private Random r;
+    private int nPuerta = -1;
 
     public Avion(String id, Aeropuerto aeropuerto) {
         this.id = id;
@@ -29,6 +32,12 @@ public class Avion extends Thread {
         return pasajeros;
     }
 
+    public String getID() {
+        return id;
+    }
+    public int getPuerta() {
+        return nPuerta;
+    }
 
     public String getTipoOperacion() {
         return TipoOperacion;
@@ -40,9 +49,19 @@ public class Avion extends Thread {
             //se genera el avion en el hangar
             aeropuerto.pasarHangar(this);
             //el avion pasa a el area de estacionamiento
-            aeropuerto.pasarArea(this);
-            //el avion trata de acceder a la puerta de embarque
-            aeropuerto.accederPuertaEmbarque(this);
+            aeropuerto.pasarAreaE(this);
+            //el avion trata de acceder a la puerta de embarque y embarcar o desembarcar pasajeros
+            nPuerta = aeropuerto.accederPuertaEmbarque(this);
+            //el avion sale de la puerta de embarque y accede al area de rodaje
+            aeropuerto.pasarAreaR(this);
+            //el piloto hace las comprobaciones
+            System.out.println("El piloto hace las primeras comprobaciones");
+            try {
+                Thread.sleep(1000 + r.nextInt(4001));
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Avion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
     }
 
