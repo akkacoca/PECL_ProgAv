@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package Aeropuerto;
+    /*
+     * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+     * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+     */
+    package Aeropuerto;
 
-/**
- *
- * @author danic
- */
-public class AreaRodaje {
-    
-}
+    /**
+     *
+     * @author danic
+     */
+    public class AreaRodaje {
+
+    }

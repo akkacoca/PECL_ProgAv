@@ -4,7 +4,11 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.ArrayList;
 
+import Main.Pantalla;
+
+
 import Hilos.Avion;
+import javax.swing.JTextField;
 public class Aeropuerto {
     private String nombre;
     private int pasajeros;
@@ -17,8 +21,17 @@ public class Aeropuerto {
     private ArrayList<Aerovia> aerovias;
     private Lock lockPuertas;
     private Lock lockPistas;
+    
+    private JTextField transferAeropuertoTextFieldB;
+    private JTextField transferAeropuertoTextFieldM;
+    private JTextField transferCiudadTextFieldB;
+    private JTextField transferCiudadTextFieldM;
 
-    public Aeropuerto(String nombre) {
+    public Aeropuerto(Pantalla pantalla, String nombre) {
+        transferAeropuertoTextFieldB = pantalla.getTransferAeropuertoTextFieldB();
+        transferAeropuertoTextFieldM = pantalla.getTransferAeropuertoTextFieldM();
+        transferCiudadTextFieldB = pantalla.getTransferCiudadTextFieldB();
+        transferCiudadTextFieldM = pantalla.getTransferCiudadTextFieldM();
         this.nombre = nombre;
         this.hangar = new Hangar();
         this.taller = new Taller();
