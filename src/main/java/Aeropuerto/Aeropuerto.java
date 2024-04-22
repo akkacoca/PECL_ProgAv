@@ -4,11 +4,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.ArrayList;
 
-import Main.Pantalla;
-
-
 import Hilos.Avion;
-import javax.swing.JTextField;
+import java.util.Random;
 public class Aeropuerto {
     private String nombre;
     private int pasajeros;
@@ -21,17 +18,9 @@ public class Aeropuerto {
     private ArrayList<Aerovia> aerovias;
     private Lock lockPuertas;
     private Lock lockPistas;
-    
-    private JTextField transferAeropuertoTextFieldB;
-    private JTextField transferAeropuertoTextFieldM;
-    private JTextField transferCiudadTextFieldB;
-    private JTextField transferCiudadTextFieldM;
+    private Random r = new Random();
 
-    public Aeropuerto(Pantalla pantalla, String nombre) {
-        transferAeropuertoTextFieldB = pantalla.getTransferAeropuertoTextFieldB();
-        transferAeropuertoTextFieldM = pantalla.getTransferAeropuertoTextFieldM();
-        transferCiudadTextFieldB = pantalla.getTransferCiudadTextFieldB();
-        transferCiudadTextFieldM = pantalla.getTransferCiudadTextFieldM();
+    public Aeropuerto(String nombre) {
         this.nombre = nombre;
         this.hangar = new Hangar();
         this.taller = new Taller();
@@ -42,6 +31,7 @@ public class Aeropuerto {
         }
         puertasEmbarque.add(new PuertaEmbarque(5, "embarque", this));
         puertasEmbarque.add(new PuertaEmbarque(6, "desembarque", this));
+
         this.pistas = new ArrayList<>();
         // Inicializar pistas
         for (int i = 0; i < 4; i++) {
@@ -49,6 +39,7 @@ public class Aeropuerto {
         }
         this.areaEstacionamiento = new AreaEstacionamiento();
         this.areaRodaje = new AreaRodaje();
+        
         this.aerovias = new ArrayList<>();
         // Inicializar aerovías
         aerovias.add(new Aerovia("Madrid-Barcelona"));
@@ -75,23 +66,37 @@ public class Aeropuerto {
         this.hangar.entrar(avion);
     }
     
-    public void pasarArea(Avion avion){
+    public void pasarAreaE(Avion avion){
+        this.hangar.salir(avion);
         this.areaEstacionamiento.entrar(avion);
     }
+    public void pasarAreaR(Avion avion){
+        liberarPuertaEmbarque(avion.getPuerta());
+        this.areaRodaje.entrar(avion);
+    }
     
-    public void accederPuertaEmbarque(Avion avion) {
+    public int accederPuertaEmbarque(Avion avion) {
         for (PuertaEmbarque puerta : puertasEmbarque) {
             if ((puerta.getTipo().equals("general") || puerta.getTipo().equals(avion.getTipoOperacion())) && (!puerta.isOcupada() || puerta.getTipo().equals(avion.getTipoOperacion()))) {
                 try {
                     puerta.solicitarAcceso(avion);
-                    System.out.println("Avion " + avion.getId() + " accede a la Puerta de Embarque " + puerta.getNumero());
-                    return;
+                    System.out.println("Avion " + avion.getID() + " accede a la Puerta de Embarque " + puerta.getNumero());
+                    this.areaEstacionamiento.salir(avion);
+                    
+                    if (avion.TipoOperacion.equals("embarque")) {
+                        puerta.embarcarPasajeros(avion);
+                    } else {
+                        puerta.desembarcarPasajeros(avion);
+                    }
+                    
+                    return puerta.getNumero();
                 } catch (InterruptedException e) {
                     // Manejar la interrupción si es necesario
                     e.printStackTrace();
                 }
             }
         }
+        return -1;
     }
 
     public void liberarPuertaEmbarque(int numeroPuerta) {
@@ -109,19 +114,22 @@ public class Aeropuerto {
         }
     }
 
-    public void asignarPista(int numeroPista) {
-        try {
-            lockPistas.lock();
-            for (Pista pista : pistas) {
-                if (pista.getNumero() == numeroPista) {
-                    pista.asignar();
-                    System.out.println("Pista " + numeroPista + " asignada.");
-                    break;
-                }
-            }
-        } finally {
-            lockPistas.unlock();
+    public int accederPista(Avion avion) {
+        for (Pista pista : pistas) {
+            try {
+                pista.solicitarAcceso(avion);
+                System.out.println("Avion " + avion.getID() + " accede a la pista " + pista.getNumero());
+                this.areaRodaje.salir(avion);
+                System.out.println("El piloto hace las últimas comprobaciones");
+                Thread.sleep(1000+ r.nextInt(2001));
+                
+                return pista.getNumero();
+            } catch (InterruptedException e) {
+                // Manejar la interrupción si es necesario
+                e.printStackTrace();
+            }  
         }
+        return -1;
     }
 
     public void liberarPista(int numeroPista) {
