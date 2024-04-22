@@ -59,9 +59,9 @@ public class Avion extends Thread {
             try {
                 Thread.sleep(1000 + r.nextInt(4001));
             } catch (InterruptedException ex) {
-                Logger.getLogger(Avion.class.getName()).log(Level.SEVERE, null, ex);
+                
             }
-            
+             
         }
     }
 
