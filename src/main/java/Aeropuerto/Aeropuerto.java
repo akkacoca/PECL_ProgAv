@@ -19,6 +19,7 @@ public class Aeropuerto {
     private Lock lockPuertas;
     private Lock lockPistas;
     private Random r = new Random();
+    private Aerovia aerovia;
 
     public Aeropuerto(String nombre) {
         this.nombre = nombre;
@@ -137,7 +138,7 @@ public class Aeropuerto {
             lockPistas.lock();
             for (Pista pista : pistas) {
                 if (pista.getNumero() == numeroPista) {
-                    pista.liberar();
+                    pista.liberarAcceso();
                     System.out.println("Pista " + numeroPista + " liberada.");
                     break;
                 }
@@ -145,5 +146,13 @@ public class Aeropuerto {
         } finally {
             lockPistas.unlock();
         }
+    }
+    
+    public void accederAerovia(Avion avion){
+        if aerovia.getNombre().equals(nombre){
+            
+        }
+        
+        
     }
 }

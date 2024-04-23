@@ -58,9 +58,20 @@ public class Avion extends Thread {
             System.out.println("El piloto hace las primeras comprobaciones");
             try {
                 Thread.sleep(1000 + r.nextInt(4001));
-            } catch (InterruptedException ex) {
-                
-            }
+            } catch (InterruptedException ex) {}
+            //se solicita acceso a pista y entra
+            aeropuerto.accederPista(this);
+            //despegue
+            try {
+                Thread.sleep(1000 + r.nextInt(4001));
+            } catch (InterruptedException ex) {}
+            
+            //Entrar aerovia
+            
+            //VUELO
+            try {
+                Thread.sleep(15000 + r.nextInt(30001));
+            } catch (InterruptedException ex) {}
              
         }
     }
