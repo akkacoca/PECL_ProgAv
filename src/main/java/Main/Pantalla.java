@@ -315,7 +315,7 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("Nº de pasageros en el aeropuerto: ");
+        jLabel7.setText("Nº de pasajeros en el aeropuerto: ");
 
         PasajerosTextFieldM.setEditable(false);
         PasajerosTextFieldM.addActionListener(new java.awt.event.ActionListener() {

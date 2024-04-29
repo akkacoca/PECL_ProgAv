@@ -12,7 +12,7 @@ public class Avion extends Thread {
     public String TipoOperacion;  // embarque/desembarque
     private int pasajeros;
     private int capacidadMax;
-    private Random r;
+    private Random r = new Random();
     private int nPuerta = -1;
 
     public Avion(String id, Aeropuerto aeropuerto) {

@@ -689,7 +689,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="N&#xba; de pasageros en el aeropuerto: "/>
+        <Property name="text" type="java.lang.String" value="N&#xba; de pasajeros en el aeropuerto: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="PasajerosTextFieldM">

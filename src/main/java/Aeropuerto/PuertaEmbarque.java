@@ -1,9 +1,9 @@
 package Aeropuerto;
 
 import Hilos.Avion;
-import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Random;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -20,7 +20,7 @@ public class PuertaEmbarque {
     public PuertaEmbarque(int numero, String tipo, Aeropuerto aeropuerto) {
         this.numero = numero;
         this.ocupada = false;
-        this.colaEspera = new ArrayDeque<>();
+        this.colaEspera = new LinkedBlockingQueue(1);
         this.tipo = tipo;
         this.lock = new ReentrantLock();
         this.condition = lock.newCondition();
@@ -42,12 +42,12 @@ public class PuertaEmbarque {
     public void solicitarAcceso(Avion avion) throws InterruptedException {
         lock.lock();
         try {
-            colaEspera.add(avion);
+            colaEspera.offer(avion);
             while (ocupada || colaEspera.peek() != avion) {
                 condition.await();
             }
             ocupada = true;
-            colaEspera.remove(avion);
+            colaEspera.poll();
         } finally {
             lock.unlock();
         }
@@ -70,7 +70,7 @@ public class PuertaEmbarque {
             // Transferencia de pasajeros al avión
             int pasajerosTransferidos = Math.min(avion.getCapacidadMax() - avion.getPasajeros(), aeropuerto.getPasajeros());
             avion.embarcarPasajeros(pasajerosTransferidos);
-            aeropuerto.salirpasajeros(pasajerosTransferidos);
+            aeropuerto.disminuirPasajeros(pasajerosTransferidos);
             // Simulamos el tiempo de embarque
             Thread.sleep(random.nextInt(3000) + 1000);
             // Simulamos la espera para embarcar más pasajeros
@@ -83,7 +83,7 @@ public class PuertaEmbarque {
         Random random = new Random();
         // Simulamos la transferencia de pasajeros al aeropuerto
         int pasajerosTransferidos = avion.getPasajeros();
-        aeropuerto.entrarpasajeros(pasajerosTransferidos);
+        aeropuerto.aumentarPasajeros(pasajerosTransferidos);
         Thread.sleep(random.nextInt(5000) + 1000); // Simulamos el tiempo de desembarque
     }
 }
