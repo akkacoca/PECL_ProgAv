@@ -21,37 +21,36 @@ public class Aeropuerto {
     private Lock lockPuertas;
     private Lock lockPistas;
     private Random r = new Random();
-    private Aerovia aerovia;
     private Semaphore semaforoPasajeros;
     private Pantalla pantalla;
+    private Aerovia AreoviaMB;
+    private Aerovia AreoviaBM;
 
-    public Aeropuerto(String nombre, Pantalla pantalla) {
+    public Aeropuerto(String nombre, Pantalla pantalla, Aerovia AreoviaMB, Aerovia AreoviaBM) {
         this.nombre = nombre;
         this.hangar = new Hangar();
         this.taller = new Taller();
         this.pasajeros = 0;
         this.pantalla = pantalla;
+        this.AreoviaMB = AreoviaMB;
+        this.AreoviaBM = AreoviaBM;
         this.semaforoPasajeros = new Semaphore(1);
         this.puertasEmbarque = new ArrayList<>();
         // Inicializar puertas de embarque
-        for (int i = 0; i < 4; i++) {
-            puertasEmbarque.add(new PuertaEmbarque(i + 1, "general", this));
+        for (int i = 1; i < 5; i++) {
+            puertasEmbarque.add(new PuertaEmbarque(i, "general", this));
         }
         puertasEmbarque.add(new PuertaEmbarque(5, "embarque", this));
         puertasEmbarque.add(new PuertaEmbarque(6, "desembarque", this));
 
         this.pistas = new ArrayList<>();
         // Inicializar pistas
-        for (int i = 0; i < 4; i++) {
-            pistas.add(new Pista(i + 1));
+        for (int i = 1; i < 5; i++) {
+            pistas.add(new Pista(i, this));
         }
         this.areaEstacionamiento = new AreaEstacionamiento();
         this.areaRodaje = new AreaRodaje();
         
-        this.aerovias = new ArrayList<>();
-        // Inicializar aerovías
-        aerovias.add(new Aerovia("Madrid-Barcelona"));
-        aerovias.add(new Aerovia("Barcelona-Madrid"));
         // Inicializar locks para puertas y pistas
         this.lockPuertas = new ReentrantLock();
         this.lockPistas = new ReentrantLock();
@@ -74,9 +73,6 @@ public class Aeropuerto {
     
         return cadena;
     }
-
-    
-    
     public void aumentarPasajeros(int cantidad) throws InterruptedException {
         // Adquirimos el semáforo
         semaforoPasajeros.acquire();
@@ -134,110 +130,180 @@ public class Aeropuerto {
     public void pasarAreaR(Avion avion){
         liberarPuertaEmbarque(avion.getPuerta());
         this.areaRodaje.entrar(avion);
+        
+        if (this.nombre == "Madrid"){
+            this.pantalla.getRodajeTextFieldM().setText(ArrayListToString(this.areaRodaje.getAviones()));
+        }
+        else {this.pantalla.getRodajeTextFieldB().setText(ArrayListToString(this.areaRodaje.getAviones()));}
     }
     
     public int accederPuertaEmbarque(Avion avion) {
-        for (PuertaEmbarque puerta : puertasEmbarque) {
-            if ((puerta.getTipo().equals("general") || puerta.getTipo().equals(avion.getTipoOperacion())) && (!puerta.isOcupada() || puerta.getTipo().equals(avion.getTipoOperacion()))) {
-                try {
-                    puerta.solicitarAcceso(avion);
-                    
-                    System.out.println("Avion " + avion.getID() + " accede a la Puerta de Embarque " + puerta.getNumero());
-                    
-                    switch (puerta.getNumero()){
-                        case 1: if (this.nombre == "Madrid"){
-                                    this.pantalla.getGate1TextFieldM().setText(avion.TipoOperacion + ": " + ArrayListToString(this.areaEstacionamiento.getAviones()));
-                                }else {this.pantalla.getGate1TextFieldB().setText(avion.TipoOperacion + ": " + ArrayListToString(this.areaEstacionamiento.getAviones()));}
-                        case 2: if (this.nombre == "Madrid"){
-                                    this.pantalla.getGate2TextFieldM().setText(avion.TipoOperacion + ": " + ArrayListToString(this.areaEstacionamiento.getAviones()));
-                                }else {this.pantalla.getGate2TextFieldB().setText(avion.TipoOperacion + ": " + ArrayListToString(this.areaEstacionamiento.getAviones()));}
-                        case 3: if (this.nombre == "Madrid"){
-                                    this.pantalla.getGate3TextFieldM().setText(avion.TipoOperacion + ": " + ArrayListToString(this.areaEstacionamiento.getAviones()));
-                                }else {this.pantalla.getGate3TextFieldB().setText(avion.TipoOperacion + ": " + ArrayListToString(this.areaEstacionamiento.getAviones()));}
-                        case 4: if (this.nombre == "Madrid"){
-                                    this.pantalla.getGate4TextFieldM().setText(avion.TipoOperacion + ": " + ArrayListToString(this.areaEstacionamiento.getAviones()));
-                                }else {this.pantalla.getGate4TextFieldB().setText(avion.TipoOperacion + ": " + ArrayListToString(this.areaEstacionamiento.getAviones()));}
-                        case 5: if (this.nombre == "Madrid"){
-                                    this.pantalla.getGate5TextFieldM().setText(avion.TipoOperacion + ": " + ArrayListToString(this.areaEstacionamiento.getAviones()));
-                                }else {this.pantalla.getGate5TextFieldB().setText(avion.TipoOperacion + ": " + ArrayListToString(this.areaEstacionamiento.getAviones()));}
-                        case 6: if (this.nombre == "Madrid"){
-                                    this.pantalla.getGate6TextFieldM().setText(avion.TipoOperacion + ": " + ArrayListToString(this.areaEstacionamiento.getAviones()));
-                                }else {this.pantalla.getGate6TextFieldB().setText(avion.TipoOperacion + ": " + ArrayListToString(this.areaEstacionamiento.getAviones()));}
-}
+        while(true){
+            for (PuertaEmbarque puerta : puertasEmbarque) {
+                if (puerta.isOcupada()){}
+                else{
+                    if ((puerta.getTipo().equals("general") || puerta.getTipo().equals(avion.getTipoOperacion())) && (!puerta.isOcupada() || puerta.getTipo().equals(avion.getTipoOperacion()))) {
+                        try {
 
-                    
-                    
-                    this.areaEstacionamiento.salir(avion);
-                    
-                    if (avion.TipoOperacion.equals("embarque")) {
-                        puerta.embarcarPasajeros(avion);
-                    } else {
-                        puerta.desembarcarPasajeros(avion);
+                            puerta.solicitarAcceso(avion);
+                            this.areaEstacionamiento.salir(avion);
+                            if (this.nombre == "Madrid"){
+                                this.pantalla.getEstacionamientoTextFieldM().setText(ArrayListToString(this.areaEstacionamiento.getAviones()));
+                            }   
+                            else {this.pantalla.getEstacionamientoTextFieldB().setText(ArrayListToString(this.areaEstacionamiento.getAviones()));}
+
+                            System.out.println("Avion " + avion.getID() + " accede a la Puerta de Embarque " + puerta.getNumero());
+
+                            switch (puerta.getNumero()){
+                                case 1: if (this.nombre == "Madrid"){
+                                            this.pantalla.getGate1TextFieldM().setText(avion.TipoOperacion + ": " + avion.getID());
+                                        }else {this.pantalla.getGate1TextFieldB().setText(avion.TipoOperacion + ": " + avion.getID());}
+                                        break;
+                                case 2: if (this.nombre == "Madrid"){
+                                            this.pantalla.getGate2TextFieldM().setText(avion.TipoOperacion + ": " + avion.getID());
+                                        }else {this.pantalla.getGate2TextFieldB().setText(avion.TipoOperacion + ": " + avion.getID());}
+                                        break;
+                                case 3: if (this.nombre == "Madrid"){
+                                            this.pantalla.getGate3TextFieldM().setText(avion.TipoOperacion + ": " + avion.getID());
+                                        }else {this.pantalla.getGate3TextFieldB().setText(avion.TipoOperacion + ": " + avion.getID());}
+                                        break;
+                                case 4: if (this.nombre == "Madrid"){
+                                            this.pantalla.getGate4TextFieldM().setText(avion.TipoOperacion + ": " + avion.getID());
+                                        }else {this.pantalla.getGate4TextFieldB().setText(avion.TipoOperacion + ": " + avion.getID());}
+                                        break;
+                                case 5: if (this.nombre == "Madrid"){
+                                            this.pantalla.getGate5TextFieldM().setText(avion.TipoOperacion + ": " + avion.getID());
+                                        }else {this.pantalla.getGate5TextFieldB().setText(avion.TipoOperacion + ": " + avion.getID());}
+                                        break;
+                                case 6: if (this.nombre == "Madrid"){
+                                            this.pantalla.getGate6TextFieldM().setText(avion.TipoOperacion + ": " + avion.getID());
+                                        }else {this.pantalla.getGate6TextFieldB().setText(avion.TipoOperacion + ": " + avion.getID());}
+                            }
+                            if (avion.TipoOperacion.equals("embarque")) {
+                                puerta.embarcarPasajeros(avion);
+                            } else {
+                                puerta.desembarcarPasajeros(avion);
+                            }
+                            //this.liberarPuertaEmbarque(puerta.getNumero());
+                            return puerta.getNumero();
+
+                        } catch (InterruptedException e) {
+                            // Manejar la interrupción si es necesario
+                            e.printStackTrace();
+                        }
                     }
-                    
-                    return puerta.getNumero();
-                } catch (InterruptedException e) {
-                    // Manejar la interrupción si es necesario
-                    e.printStackTrace();
                 }
             }
         }
-        return -1;
     }
 
     public void liberarPuertaEmbarque(int numeroPuerta) {
-        try {
-            lockPuertas.lock();
-            for (PuertaEmbarque puerta : puertasEmbarque) {
-                if (puerta.getNumero() == numeroPuerta) {
-                    puerta.liberarAcceso();
-                    System.out.println("Puerta de embarque " + numeroPuerta + " liberada.");
-                    break;
-                }
+        switch (numeroPuerta){
+                case 1: if (this.nombre == "Madrid"){
+                            this.pantalla.getGate1TextFieldM().setText("");
+                        }else {this.pantalla.getGate1TextFieldB().setText("");}
+                        break;
+                case 2: if (this.nombre == "Madrid"){
+                            this.pantalla.getGate2TextFieldM().setText("");
+                        }else {this.pantalla.getGate2TextFieldB().setText("");}
+                        break;
+                case 3: if (this.nombre == "Madrid"){
+                            this.pantalla.getGate3TextFieldM().setText("");
+                        }else {this.pantalla.getGate3TextFieldB().setText("");}
+                        break;
+                case 4: if (this.nombre == "Madrid"){
+                            this.pantalla.getGate4TextFieldM().setText("");
+                        }else {this.pantalla.getGate4TextFieldB().setText("");}
+                        break;
+                case 5: if (this.nombre == "Madrid"){
+                            this.pantalla.getGate5TextFieldM().setText("");
+                        }else {this.pantalla.getGate5TextFieldB().setText("");}
+                        break;
+                case 6: if (this.nombre == "Madrid"){
+                            this.pantalla.getGate6TextFieldM().setText("");
+                        }else {this.pantalla.getGate6TextFieldB().setText("");}
             }
-        } finally {
-            lockPuertas.unlock();
-        }
+                PuertaEmbarque puerta = puertasEmbarque.get(numeroPuerta - 1);
+                puerta.liberarAcceso();
+                System.out.println("Puerta de embarque " + numeroPuerta + " del aeropuerto de " + this.nombre + " liberada."); 
     }
-
+    
     public int accederPista(Avion avion) {
-        for (Pista pista : pistas) {
-            try {
-                pista.solicitarAcceso(avion);
-                System.out.println("Avion " + avion.getID() + " accede a la pista " + pista.getNumero());
-                this.areaRodaje.salir(avion);
-                System.out.println("El piloto hace las últimas comprobaciones");
-                Thread.sleep(1000+ r.nextInt(2001));
-                
-                return pista.getNumero();
-            } catch (InterruptedException e) {
-                // Manejar la interrupción si es necesario
-                e.printStackTrace();
-            }  
+        while(true){
+            for (Pista pista : pistas) {
+                if (pista.isOcupada()){}
+                else{
+                    try {
+                        pista.solicitarAcceso(avion);
+                        this.areaRodaje.salir(avion);
+
+                        if (this.nombre == "Madrid"){
+                            this.pantalla.getRodajeTextFieldM().setText(ArrayListToString(this.areaRodaje.getAviones()));
+                        }
+                        else {this.pantalla.getRodajeTextFieldB().setText(ArrayListToString(this.areaRodaje.getAviones()));}
+
+                        System.out.println("Avion " + avion.getID() + " accede a la pista " + pista.getNumero());
+
+                        switch (pista.getNumero()){
+                            case 1: if (this.nombre == "Madrid"){
+                                        this.pantalla.getPista1TextFieldM().setText(avion.getID());
+                                    }else {this.pantalla.getPista1TextFieldB().setText(avion.getID());}
+                                    break;
+                            case 2: if (this.nombre == "Madrid"){
+                                        this.pantalla.getPista2TextFieldM().setText(avion.getID());
+                                    }else {this.pantalla.getPista2TextFieldB().setText(avion.getID());}
+                                    break;
+                            case 3: if (this.nombre == "Madrid"){
+                                        this.pantalla.getPista3TextFieldM().setText(avion.getID());
+                                    }else {this.pantalla.getPista3TextFieldB().setText(avion.getID());}
+                                    break;
+                            case 4: if (this.nombre == "Madrid"){
+                                        this.pantalla.getPista4TextFieldM().setText(avion.getID());
+                                    }else {this.pantalla.getPista4TextFieldB().setText(avion.getID());}
+                        }
+
+                        System.out.println("El piloto hace las últimas comprobaciones");
+                        Thread.sleep(1000+ r.nextInt(2001));
+
+                        return pista.getNumero();
+                    } catch (InterruptedException e) {
+                        // Manejar la interrupción si es necesario
+                        e.printStackTrace();
+                    }
+                }     
+            }
         }
-        return -1;
     }
 
     public void liberarPista(int numeroPista) {
-        try {
-            lockPistas.lock();
-            for (Pista pista : pistas) {
-                if (pista.getNumero() == numeroPista) {
-                    pista.liberarAcceso();
-                    System.out.println("Pista " + numeroPista + " liberada.");
+        
+        switch (numeroPista){
+            case 1: if (this.nombre == "Madrid"){
+                        this.pantalla.getPista1TextFieldM().setText("");
+                    }else {this.pantalla.getPista1TextFieldB().setText("");}
                     break;
-                }
-            }
-        } finally {
-            lockPistas.unlock();
+            case 2: if (this.nombre == "Madrid"){
+                        this.pantalla.getPista2TextFieldM().setText("");
+                    }else {this.pantalla.getPista2TextFieldB().setText("");}
+                    break;
+            case 3: if (this.nombre == "Madrid"){
+                        this.pantalla.getPista3TextFieldM().setText("");
+                    }else {this.pantalla.getPista3TextFieldB().setText("");}
+                    break;
+            case 4: if (this.nombre == "Madrid"){
+                        this.pantalla.getPista4TextFieldM().setText("");
+                    }else {this.pantalla.getPista4TextFieldB().setText("");}
         }
+        
+        Pista pista = pistas.get(numeroPista - 1);
+        pista.liberarAcceso();
+        System.out.println("Pista " + numeroPista + " liberada.");
     }
     
-    public void accederAerovia(Avion avion){
-        
-            
+    public void accederAerovia(Avion avion, Aerovia aerovia){
+        liberarPista(avion.getPista());
+        aerovia.entrar(avion);
+        this.pantalla.getAeroviaMBTextField().setText(ArrayListToString(AreoviaMB.getAviones()));
+        this.pantalla.getAeroviaBMTextField().setText(ArrayListToString(AreoviaBM.getAviones()));
     }
-        
-        
-    
 }

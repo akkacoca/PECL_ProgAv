@@ -3,7 +3,7 @@ package Aeropuerto;
 import Hilos.Avion;
 import java.util.Queue;
 import java.util.Random;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -20,7 +20,7 @@ public class PuertaEmbarque {
     public PuertaEmbarque(int numero, String tipo, Aeropuerto aeropuerto) {
         this.numero = numero;
         this.ocupada = false;
-        this.colaEspera = new LinkedBlockingQueue(1);
+        this.colaEspera = new ConcurrentLinkedQueue<>();
         this.tipo = tipo;
         this.lock = new ReentrantLock();
         this.condition = lock.newCondition();
@@ -39,7 +39,7 @@ public class PuertaEmbarque {
         return ocupada;
     }
 
-    public void solicitarAcceso(Avion avion) throws InterruptedException {
+    public Avion solicitarAcceso(Avion avion) throws InterruptedException {
         lock.lock();
         try {
             colaEspera.offer(avion);
@@ -47,10 +47,12 @@ public class PuertaEmbarque {
                 condition.await();
             }
             ocupada = true;
-            colaEspera.poll();
+            avion = colaEspera.poll();
+            
         } finally {
             lock.unlock();
         }
+        return avion;
     }
 
     public void liberarAcceso() {
