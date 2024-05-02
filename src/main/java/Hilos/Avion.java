@@ -19,6 +19,7 @@ public class Avion extends Thread {
     private int nPista = -1;
     private Aerovia AreoviaMB;
     private Aerovia AreoviaBM;
+    private Aerovia AeroviaActual;
 
     public Avion(String id, Aeropuerto aerOrigen, Aeropuerto aerDestino, Aerovia AreoviaMB, Aerovia AreoviaBM) {
         this.id = id;
@@ -54,70 +55,71 @@ public class Avion extends Thread {
     public String getTipoOperacion() {
         return TipoOperacion;
     }
+
+    public Aeropuerto getAerOrigen() {
+        return aerOrigen;
+    }
+
+    public Aeropuerto getAerDestino() {
+        return aerDestino;
+    }
+
+    public Aerovia getAeroviaActual() {
+        return AeroviaActual;
+    }
     
     @Override
     public void run() {
-        while (true) {
-            //se genera el avion en el hangar
-            aerOrigen.pasarHangar(this);
-            //el avion pasa a el area de estacionamiento
-            aerOrigen.pasarAreaE(this);
-            //el avion trata de acceder a la puerta de embarque y embarcar o desembarcar pasajeros
-            nPuerta = aerOrigen.accederPuertaEmbarque(this);
-            //el avion sale de la puerta de embarque y accede al area de rodaje
-            aerOrigen.pasarAreaR(this);
-            //el piloto hace las comprobaciones
-            System.out.println("El piloto hace las primeras comprobaciones del avion " + this.id);
-            try {
+        try{
+            while (true) {
+                this.TipoOperacion = "embarque";
+                //se genera el avion en el hangar
+                aerOrigen.pasarHangar(this);
+                
+                //el avion pasa a el area de estacionamiento
+                aerOrigen.pasarAreaE(this);
+                
+                //el avion trata de acceder a la puerta de embarque y embarcar o desembarcar pasajeros
+                nPuerta = aerOrigen.accederPuertaEmbarque(this);
+                
+                //el avion sale de la puerta de embarque y accede al area de rodaje
+                aerOrigen.pasarAreaR(this);
+                
+                //el piloto hace las comprobaciones
+                System.out.println("El piloto hace las primeras comprobaciones del avion " + this.id);
                 Thread.sleep(1000 + r.nextInt(4001));
-            } catch (InterruptedException ex) {}
-            //se solicita acceso a pista y entra
-            nPista = aerOrigen.accederPista(this);
-            //despegue
-            try {
+
+                //se solicita acceso a pista y entra
+                nPista = aerOrigen.accederPista(this);
+                
+                //despegue
                 Thread.sleep(1000 + r.nextInt(4001));
-            } catch (InterruptedException ex) {}
-            
-            
-            //Entrar aerovia
-            Aerovia aerovia;
-            if(aerOrigen.equals("Madrid")){
-            aerovia = AreoviaMB;
-            }
-            else{aerovia = AreoviaBM;}
-            aerOrigen.accederAerovia(this, aerovia);
-            
-            
-            
-            //VUELO
-            System.out.println("Avion " + this.id + " volando en " + AreoviaMB.getNombre());
-            try {
+                
+                //Entrar aerovia
+                AeroviaActual = aerOrigen.accederAerovia(this);
+
+                //Cambiar la operacion del avion
+                this.TipoOperacion = "desembarque";
+
+                //VUELO
+                System.out.println("Avion " + this.id + " volando en " + AeroviaActual.getNombre());
                 Thread.sleep(15000 + r.nextInt(30001));
-            } catch (InterruptedException ex) {}
-             
-            
-            
-            nPista = aerDestino.accederPistaAterrizar(this);
-            
-            aerDestino.pasarAreaR(this);
-            
-            nPuerta = aerDestino.accederPuertaEmbarque(this);
-            
-            
-            
-            
-            
+
+                // Solicita la pista y aterriza
+                nPista = aerDestino.accederPista(this);
+                Thread.sleep(1000 + r.nextInt(4001));
+                System.out.println("Avion " + this.id + " ha aterrizado en la pista " + nPista);                
+
+                // Pasa al area de rodaje
+                aerDestino.pasarAreaR(this);
+                
+                //nPuerta = aerDestino.accederPuertaEmbarque(this);
+                
+                System.out.println("AVION " + this.id + " FINALIZA.");
+                break;
+            }
         }
-    }
-
-    private void despegar() {
-        System.out.println("Avion " + id + " despegando.");
-        // Lógica para el despegue del avión
-    }
-
-    private void aterrizar() {
-        System.out.println("Avion " + id + " aterrizando.");
-        // Lógica para el aterrizaje del avión
+        catch (InterruptedException e){}
     }
     
     public void embarcarPasajeros(int cantidad) {
@@ -126,21 +128,5 @@ public class Avion extends Thread {
 
     public void desembarcarPasajeros(int cantidad) {
         pasajeros -= cantidad;
-    }
-
-    public void accederPuertaEmbarque(PuertaEmbarque puerta) {
-        try {
-            puerta.solicitarAcceso(this);
-            if (TipoOperacion.equals("embarque")) {
-                puerta.embarcarPasajeros(this);
-            } else {
-                puerta.desembarcarPasajeros(this);
-            }
-            System.out.println("Avion " + id + " completó la operación en la Puerta de Embarque " + puerta.getNumero());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            puerta.liberarAcceso();
-        }
     }
 }

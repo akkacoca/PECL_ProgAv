@@ -47,7 +47,7 @@ public class CreadorAviones extends Thread{
             try {
                 Thread.sleep(1000 + r.nextInt(2001));
             } catch (InterruptedException ex) {
-                Logger.getLogger(CreadorBuses.class.getName()).log(Level.SEVERE, null, ex);
+                
             }
         }
     }
