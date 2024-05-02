@@ -57,4 +57,22 @@ public class Pista {
             lock.unlock();
         }
     }
+    
+    
+    
+    public Avion solicitarAccesoAterrizar(Avion avion) throws InterruptedException {
+        lock.lock();
+        try {
+            colaEspera.add(avion);
+            while (ocupada || colaEspera.peek() != avion) {
+                condition.await();
+            }
+            ocupada = true;
+            avion = colaEspera.remove();
+            
+        } finally {
+            lock.unlock();
+        }
+        return avion;
+    }
 }

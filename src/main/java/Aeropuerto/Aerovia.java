@@ -20,7 +20,7 @@ public class Aerovia {
     }
     public void entrar(Avion avion){
         aviones.add(avion.getID());
-        System.out.println("Avion " + avion.getID() + " accede a la aerovia.");
+        System.out.println("Avion " + avion.getID() + " accede a la aerovia "+ getNombre());
     }
     public void salir(Avion avion){
         aviones.remove(avion.getID());

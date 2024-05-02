@@ -88,4 +88,21 @@ public class PuertaEmbarque {
         aeropuerto.aumentarPasajeros(pasajerosTransferidos);
         Thread.sleep(random.nextInt(5000) + 1000); // Simulamos el tiempo de desembarque
     }
+    
+    
+    public Avion solicitarAccesoAterrizar(Avion avion) throws InterruptedException {
+        lock.lock();
+        try {
+            colaEspera.offer(avion);
+            while (ocupada || colaEspera.peek() != avion) {
+                condition.await();
+            }
+            ocupada = true;
+            avion = colaEspera.poll();
+            
+        } finally {
+            lock.unlock();
+        }
+        return avion;
+    }
 }

@@ -403,6 +403,11 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel27.setText("Área Rodaje:");
 
         RodajeTextFieldM.setEditable(false);
+        RodajeTextFieldM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RodajeTextFieldMActionPerformed(evt);
+            }
+        });
 
         jLabel29.setText("Pista 1:");
 
@@ -551,6 +556,11 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel2.setText("Aeriovía Madird-Barcelona");
 
         AeroviaMBTextField.setEditable(false);
+        AeroviaMBTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AeroviaMBTextFieldActionPerformed(evt);
+            }
+        });
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Aeriovía Barcelona-Madrid");
@@ -1058,6 +1068,14 @@ public class Pantalla extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         /*escritor.cerrarEscritor();*/
     }//GEN-LAST:event_formWindowClosing
+
+    private void RodajeTextFieldMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RodajeTextFieldMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RodajeTextFieldMActionPerformed
+
+    private void AeroviaMBTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AeroviaMBTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AeroviaMBTextFieldActionPerformed
 
     /**
      * @param args the command line arguments

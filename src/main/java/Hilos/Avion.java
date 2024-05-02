@@ -78,6 +78,7 @@ public class Avion extends Thread {
                 Thread.sleep(1000 + r.nextInt(4001));
             } catch (InterruptedException ex) {}
             
+            
             //Entrar aerovia
             Aerovia aerovia;
             if(aerOrigen.equals("Madrid")){
@@ -86,12 +87,26 @@ public class Avion extends Thread {
             else{aerovia = AreoviaBM;}
             aerOrigen.accederAerovia(this, aerovia);
             
+            
+            
             //VUELO
             System.out.println("Avion " + this.id + " volando en " + AreoviaMB.getNombre());
             try {
                 Thread.sleep(15000 + r.nextInt(30001));
             } catch (InterruptedException ex) {}
              
+            
+            
+            nPista = aerDestino.accederPistaAterrizar(this);
+            
+            aerDestino.pasarAreaR(this);
+            
+            nPuerta = aerDestino.accederPuertaEmbarque(this);
+            
+            
+            
+            
+            
         }
     }
 

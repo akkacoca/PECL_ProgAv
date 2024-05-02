@@ -303,7 +303,134 @@ public class Aeropuerto {
     public void accederAerovia(Avion avion, Aerovia aerovia){
         liberarPista(avion.getPista());
         aerovia.entrar(avion);
-        this.pantalla.getAeroviaMBTextField().setText(ArrayListToString(AreoviaMB.getAviones()));
-        this.pantalla.getAeroviaBMTextField().setText(ArrayListToString(AreoviaBM.getAviones()));
+
+        // Verificar el aeropuerto de origen del avión para determinar la aerovía correcta
+        if (this.nombre.equals("Madrid")) {
+            this.pantalla.getAeroviaMBTextField().setText(ArrayListToString(AreoviaMB.getAviones()));
+        } else {
+            this.pantalla.getAeroviaBMTextField().setText(ArrayListToString(AreoviaBM.getAviones()));
+        }
     }
+    
+    
+    
+    public int accederPistaAterrizar(Avion avion) {
+        while(true){
+            for (Pista pista : pistas) {
+                if (pista.isOcupada()){}
+                else{
+                    try {
+                        pista.solicitarAccesoAterrizar(avion);
+                        this.aerovia.salir(avion);
+
+                        if (this.nombre == "Madrid"){
+                            this.pantalla.getAeroviaMBTextField().setText(ArrayListToString(this.aerovia.getAviones()));
+                        }
+                        else {this.pantalla.getAeroviaBMTextField().setText(ArrayListToString(this.aerovia.getAviones()));}
+
+                        System.out.println("Avion " + avion.getID() + " accede a la pista " + pista.getNumero());
+
+                        switch (pista.getNumero()){
+                            case 1: if (this.nombre == "Madrid"){
+                                        this.pantalla.getPista1TextFieldM().setText(avion.getID());
+                                    }else {this.pantalla.getPista1TextFieldB().setText(avion.getID());}
+                                    break;
+                            case 2: if (this.nombre == "Madrid"){
+                                        this.pantalla.getPista2TextFieldM().setText(avion.getID());
+                                    }else {this.pantalla.getPista2TextFieldB().setText(avion.getID());}
+                                    break;
+                            case 3: if (this.nombre == "Madrid"){
+                                        this.pantalla.getPista3TextFieldM().setText(avion.getID());
+                                    }else {this.pantalla.getPista3TextFieldB().setText(avion.getID());}
+                                    break;
+                            case 4: if (this.nombre == "Madrid"){
+                                        this.pantalla.getPista4TextFieldM().setText(avion.getID());
+                                    }else {this.pantalla.getPista4TextFieldB().setText(avion.getID());}
+                        }
+
+                        System.out.println("El avión aterriza.");
+                        Thread.sleep(1000+ r.nextInt(5001));
+
+                        return pista.getNumero();
+                    } catch (InterruptedException e) {
+                        // Manejar la interrupción si es necesario
+                        e.printStackTrace();
+                    }
+                }     
+            }
+        }
+    }
+    
+    
+    public void pasarAreaRAterrizar(Avion avion){
+        liberarPista(avion.getPista());
+        this.areaRodaje.entrar(avion);
+        
+        if (this.nombre == "Madrid"){
+            this.pantalla.getRodajeTextFieldM().setText(ArrayListToString(this.areaRodaje.getAviones()));
+        }
+        else {this.pantalla.getRodajeTextFieldB().setText(ArrayListToString(this.areaRodaje.getAviones()));}
+    }
+    
+    public int accederPuertaEmbarqueAterrizar(Avion avion) {
+        while(true){
+            for (PuertaEmbarque puerta : puertasEmbarque) {
+                if (puerta.isOcupada()){}
+                else{
+                    if ((puerta.getTipo().equals("general") || puerta.getTipo().equals(avion.getTipoOperacion())) && (!puerta.isOcupada() || puerta.getTipo().equals(avion.getTipoOperacion()))) {
+                        try {
+
+                            puerta.solicitarAccesoAterrizar(avion);
+                            this.areaRodaje.salir(avion);
+                            if (this.nombre == "Madrid"){
+                                this.pantalla.getEstacionamientoTextFieldM().setText(ArrayListToString(this.areaEstacionamiento.getAviones()));
+                            }   
+                            else {this.pantalla.getEstacionamientoTextFieldB().setText(ArrayListToString(this.areaEstacionamiento.getAviones()));}
+
+                            System.out.println("Avion " + avion.getID() + " accede a la Puerta de Embarque " + puerta.getNumero());
+
+                            switch (puerta.getNumero()){
+                                case 1: if (this.nombre == "Madrid"){
+                                            this.pantalla.getGate1TextFieldM().setText(avion.TipoOperacion + ": " + avion.getID());
+                                        }else {this.pantalla.getGate1TextFieldB().setText(avion.TipoOperacion + ": " + avion.getID());}
+                                        break;
+                                case 2: if (this.nombre == "Madrid"){
+                                            this.pantalla.getGate2TextFieldM().setText(avion.TipoOperacion + ": " + avion.getID());
+                                        }else {this.pantalla.getGate2TextFieldB().setText(avion.TipoOperacion + ": " + avion.getID());}
+                                        break;
+                                case 3: if (this.nombre == "Madrid"){
+                                            this.pantalla.getGate3TextFieldM().setText(avion.TipoOperacion + ": " + avion.getID());
+                                        }else {this.pantalla.getGate3TextFieldB().setText(avion.TipoOperacion + ": " + avion.getID());}
+                                        break;
+                                case 4: if (this.nombre == "Madrid"){
+                                            this.pantalla.getGate4TextFieldM().setText(avion.TipoOperacion + ": " + avion.getID());
+                                        }else {this.pantalla.getGate4TextFieldB().setText(avion.TipoOperacion + ": " + avion.getID());}
+                                        break;
+                                case 5: if (this.nombre == "Madrid"){
+                                            this.pantalla.getGate5TextFieldM().setText(avion.TipoOperacion + ": " + avion.getID());
+                                        }else {this.pantalla.getGate5TextFieldB().setText(avion.TipoOperacion + ": " + avion.getID());}
+                                        break;
+                                case 6: if (this.nombre == "Madrid"){
+                                            this.pantalla.getGate6TextFieldM().setText(avion.TipoOperacion + ": " + avion.getID());
+                                        }else {this.pantalla.getGate6TextFieldB().setText(avion.TipoOperacion + ": " + avion.getID());}
+                            }
+                            if (avion.TipoOperacion.equals("embarque")) {
+                                puerta.embarcarPasajeros(avion);
+                            } else {
+                                puerta.desembarcarPasajeros(avion);
+                            }
+                            //this.liberarPuertaEmbarque(puerta.getNumero());
+                            return puerta.getNumero();
+
+                        } catch (InterruptedException e) {
+                            // Manejar la interrupción si es necesario
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }
+
