@@ -143,7 +143,9 @@ public class Avion extends Thread {
                 //decide si ir reposar o continua
                 int decision = r.nextInt(2) + 1;
                 if(decision==1){
-                aerDestino.pasarTaller(this, "descanso");
+                    aerDestino.pasarHangar(this);
+                    Thread.sleep(r.nextInt(15001) + 15000);
+                    System.out.println("Avion " + this.id + " esta descansando en el taller.");
                 }
                 
                 // se repite el ciclo

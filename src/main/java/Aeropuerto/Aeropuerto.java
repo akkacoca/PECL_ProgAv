@@ -378,8 +378,6 @@ public class Aeropuerto {
         System.out.println("Avion " + avion.getID() + " esta haciendo la revision en el taller.");}
         else if (tipoRevision.equals("rapida")){Thread.sleep(r.nextInt(4001) + 1000);
             System.out.println("Avion " + avion.getID() + " esta haciendo la revision en el taller.");}
-        else {Thread.sleep(r.nextInt(15001) + 15000);
-            System.out.println("Avion " + avion.getID() + " esta descansando en el taller.");}
         
         this.taller.salir(avion);
         this.taller.liberarAcceso();
