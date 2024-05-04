@@ -20,6 +20,7 @@ public class Avion extends Thread {
     private Aerovia AreoviaMB;
     private Aerovia AreoviaBM;
     private Aerovia AeroviaActual;
+    private int nVuelos;
 
     public Avion(String id, Aeropuerto aerOrigen, Aeropuerto aerDestino, Aerovia AreoviaMB, Aerovia AreoviaBM) {
         this.id = id;
@@ -30,6 +31,7 @@ public class Avion extends Thread {
         this.TipoOperacion = "embarque";  //cuando se genera el avíon comienza el ciclo de cero
         this.pasajeros = 0;
         this.capacidadMax = r.nextInt(201) + 100;
+        this.nVuelos = 0;
         
     }
 
@@ -67,14 +69,22 @@ public class Avion extends Thread {
     public Aerovia getAeroviaActual() {
         return AeroviaActual;
     }
+
+    public int getnVuelos() {
+        return nVuelos;
+    }
+
+    public void setnVuelos(int nVuelos) {
+        this.nVuelos = nVuelos;
+    }
     
     @Override
     public void run() {
         try{
+            //se genera el avion en el hangar
+            aerOrigen.pasarHangar(this);
             while (true) {
                 this.TipoOperacion = "embarque";
-                //se genera el avion en el hangar
-                aerOrigen.pasarHangar(this);
                 
                 //el avion pasa a el area de estacionamiento
                 aerOrigen.pasarAreaE(this);
@@ -113,10 +123,33 @@ public class Avion extends Thread {
                 // Pasa al area de rodaje
                 aerDestino.pasarAreaR(this);
                 
-                //nPuerta = aerDestino.accederPuertaEmbarque(this);
+                // Accede a la puerta de embarque y desembarca pasageros
+                Thread.sleep(r.nextInt(3000 + 2001));
+                nPuerta = aerDestino.accederPuertaEmbarque(this);
                 
-                System.out.println("AVION " + this.id + " FINALIZA.");
-                break;
+                // Accede al area de estacionamiento
+                aerDestino.pasarAreaE(this);
+                System.out.println("El piloto hace las comprobaciones a la llegada del avion " + this.id);
+                Thread.sleep(1000 + r.nextInt(4001));
+                
+                // va al taller
+                if(nVuelos >= 15){
+                    aerDestino.pasarTaller(this, "profunda");
+                }
+                else{
+                    aerDestino.pasarTaller(this, "rapida");
+                }
+                
+                //decide si ir reposar o continua
+                int decision = r.nextInt(2) + 1;
+                if(decision==1){
+                aerDestino.pasarTaller(this, "descanso");
+                }
+                
+                // se repite el ciclo
+                Aeropuerto aux = aerOrigen;
+                aerOrigen = aerDestino;
+                aerDestino = aux;
             }
         }
         catch (InterruptedException e){}

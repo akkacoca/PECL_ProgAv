@@ -65,12 +65,14 @@ public class PuertaEmbarque {
         }
     }
 
-    public void embarcarPasajeros(Avion avion) throws InterruptedException {
+    public int embarcarPasajeros(Avion avion) throws InterruptedException {
         Random random = new Random();
+        int pasajerosVuelo = 0;
         int intentos = 0;
         while (avion.getPasajeros() < avion.getCapacidadMax() && intentos < 3) {
             // Transferencia de pasajeros al avión
             int pasajerosTransferidos = Math.min(avion.getCapacidadMax() - avion.getPasajeros(), aeropuerto.getPasajeros());
+            pasajerosVuelo += pasajerosTransferidos;
             avion.embarcarPasajeros(pasajerosTransferidos);
             aeropuerto.disminuirPasajeros(pasajerosTransferidos);
             // Simulamos el tiempo de embarque
@@ -79,14 +81,16 @@ public class PuertaEmbarque {
             Thread.sleep(random.nextInt(5000) + 1000);
             intentos++;
         }
+        return pasajerosVuelo;
     }
 
-    public void desembarcarPasajeros(Avion avion) throws InterruptedException {
+    public int desembarcarPasajeros(Avion avion) throws InterruptedException {
         Random random = new Random();
         // Simulamos la transferencia de pasajeros al aeropuerto
         int pasajerosTransferidos = avion.getPasajeros();
         aeropuerto.aumentarPasajeros(pasajerosTransferidos);
         Thread.sleep(random.nextInt(5000) + 1000); // Simulamos el tiempo de desembarque
+        return pasajerosTransferidos;
     }
     
     

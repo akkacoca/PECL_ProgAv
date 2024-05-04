@@ -42,11 +42,13 @@ public class Autobus extends Thread {
                 Thread.sleep(r.nextInt(5001) + 5000);
                 //dejar pasajeros en el aeropuerto
                 aeropuerto.aumentarPasajeros(pasajeros);
+                System.out.println("El autobus " + this.id + " deja a " + pasajeros + " en el aeropuerto " + aeropuerto.getNombre());
                 pasajeros = 0;
                 //espera a que suban pasajeros en el aeropuerto
                 Thread.sleep(r.nextInt(3001) + 2000);
                 //suben pasajeros en el aeropuerto
                 pasajeros = r.nextInt(Math.min(aeropuerto.getPasajeros() + 1, aforoBus));
+                System.out.println("El autobus " + this.id + " recoje a " + pasajeros + " en el aeropuerto " + aeropuerto.getNombre());
                 aeropuerto.disminuirPasajeros(pasajeros);
                 
                 if (this.aeropuerto.getNombre() == "Madrid"){
