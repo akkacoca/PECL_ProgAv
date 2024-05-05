@@ -1,6 +1,7 @@
 package Hilos;
 
 import Aeropuerto.Aeropuerto;
+import Main.Escritor;
 import Main.Pantalla;
 import Main.Paso;
 import java.util.Random;
@@ -8,14 +9,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CreadorBuses extends Thread{
-    
+    private final Escritor escritor;
     private Aeropuerto aerM;
     private Aeropuerto aerB;
     private Paso paso;
     private Pantalla pantalla;
     private Random r = new Random();
     
-    public CreadorBuses(Aeropuerto aerM, Aeropuerto aerB, Paso paso, Pantalla pantalla) {
+    public CreadorBuses(Aeropuerto aerM, Aeropuerto aerB, Paso paso, Pantalla pantalla,Escritor escritor) {
+        this.escritor = escritor;
         this.aerB = aerB;
         this.aerM = aerM;
         this.paso = paso;
@@ -26,11 +28,11 @@ public class CreadorBuses extends Thread{
     public void run() {
         for (int i=0000; i<=4000; i++){
             if(i%2==0){
-                Autobus a = new Autobus("B-"+i, aerM, paso, pantalla);
+                Autobus a = new Autobus("B-"+i, aerM, paso, pantalla, escritor);
                 a.start();
             }
             else{
-                Autobus a = new Autobus("B-"+i, aerB, paso, pantalla);
+                Autobus a = new Autobus("B-"+i, aerB, paso, pantalla, escritor);
                 a.start();
             }
             try {

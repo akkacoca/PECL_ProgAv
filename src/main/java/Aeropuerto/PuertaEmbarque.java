@@ -1,6 +1,7 @@
 package Aeropuerto;
 
 import Hilos.Avion;
+import Main.Paso;
 import java.util.Queue;
 import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -9,6 +10,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class PuertaEmbarque {
+    private final Paso paso;
     private int numero;
     private boolean ocupada;
     private Queue<Avion> colaEspera;
@@ -17,7 +19,8 @@ public class PuertaEmbarque {
     private Condition condition;
     private Aeropuerto aeropuerto;
 
-    public PuertaEmbarque(int numero, String tipo, Aeropuerto aeropuerto) {
+    public PuertaEmbarque(int numero, String tipo, Aeropuerto aeropuerto, Paso paso) {
+        this.paso = paso;
         this.numero = numero;
         this.ocupada = false;
         this.colaEspera = new ConcurrentLinkedQueue<>();

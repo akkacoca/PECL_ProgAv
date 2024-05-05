@@ -1,6 +1,7 @@
 package Aeropuerto;
 
 import Hilos.Avion;
+import Main.Paso;
 import java.util.ArrayList;
 import java.util.Queue;
 import java.util.Random;
@@ -19,8 +20,10 @@ public class Taller {
     private Aeropuerto aeropuerto;
     private Semaphore semaforoPuerta;
     private Random r = new Random();
-
-    public Taller(Aeropuerto aeropuerto) {
+    private final Paso paso;
+    
+    public Taller(Aeropuerto aeropuerto, Paso paso) {
+        this.paso = paso;
         this.aviones = new ArrayList<>();
         this.colaEspera = new ConcurrentLinkedQueue<>();
         this.lock = new ReentrantLock();

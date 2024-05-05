@@ -6,11 +6,13 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Pantalla extends javax.swing.JFrame {
-
+    
+    private final Escritor escritor;
     private final Paso paso;
     private boolean parado;
     
-    public Pantalla(Paso paso) {
+    public Pantalla(Escritor escritor, Paso paso) {
+        this.escritor = escritor;
         this.paso = paso;
         parado = false;
         initComponents();
@@ -923,8 +925,17 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void BotonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPararActionPerformed
         /*escritor.escribir("SISTEMA DETENIDO");*/
-        paso.cerrar();
-        parado = true;
+        if (parado) {
+            escritor.escribir("SISTEMA REANUDADO");
+            BotonParar.setText("Parar");
+            paso.abrir();
+            parado = false;
+        } else {
+            escritor.escribir("SISTEMA DETENIDO");
+            BotonParar.setText("Reanudar");
+            paso.cerrar();
+            parado = true;
+        }
     }//GEN-LAST:event_BotonPararActionPerformed
 
     private void BotonReanudarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReanudarActionPerformed

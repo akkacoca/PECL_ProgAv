@@ -3,11 +3,14 @@ package Hilos;
 import Aeropuerto.Aeropuerto;
 import Aeropuerto.Aerovia;
 import Aeropuerto.PuertaEmbarque;
+import Main.Escritor;
+import Main.Paso;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Avion extends Thread {
+    private final Escritor escritor;
     private String id;
     private Aeropuerto aerOrigen;
     private Aeropuerto aerDestino;
@@ -21,8 +24,11 @@ public class Avion extends Thread {
     private Aerovia AreoviaBM;
     private Aerovia AeroviaActual;
     private int nVuelos;
-
-    public Avion(String id, Aeropuerto aerOrigen, Aeropuerto aerDestino, Aerovia AreoviaMB, Aerovia AreoviaBM) {
+    private final Paso paso; 
+    
+    public Avion(String id, Aeropuerto aerOrigen, Aeropuerto aerDestino, Aerovia AreoviaMB, Aerovia AreoviaBM, Escritor escritor, Paso paso) {
+        this.paso = paso;
+        this.escritor = escritor;
         this.id = id;
         this.aerOrigen = aerOrigen;
         this.aerDestino = aerDestino;
@@ -96,7 +102,7 @@ public class Avion extends Thread {
                 aerOrigen.pasarAreaR(this);
                 
                 //el piloto hace las comprobaciones
-                System.out.println("El piloto hace las primeras comprobaciones del avion " + this.id);
+                escritor.escribir("El piloto hace las primeras comprobaciones del avion " + this.id);
                 Thread.sleep(1000 + r.nextInt(4001));
 
                 //se solicita acceso a pista y entra
@@ -112,13 +118,13 @@ public class Avion extends Thread {
                 this.TipoOperacion = "desembarque";
 
                 //VUELO
-                System.out.println("Avion " + this.id + " volando en " + AeroviaActual.getNombre());
+                escritor.escribir("Avion " + this.id + " volando en " + AeroviaActual.getNombre());
                 Thread.sleep(15000 + r.nextInt(30001));
 
                 // Solicita la pista y aterriza
                 nPista = aerDestino.accederPista(this);
                 Thread.sleep(1000 + r.nextInt(4001));
-                System.out.println("Avion " + this.id + " ha aterrizado en la pista " + nPista);                
+                escritor.escribir("Avion " + this.id + " ha aterrizado en la pista " + nPista);                
 
                 // Pasa al area de rodaje
                 aerDestino.pasarAreaR(this);
@@ -129,7 +135,7 @@ public class Avion extends Thread {
                 
                 // Accede al area de estacionamiento
                 aerDestino.pasarAreaE(this);
-                System.out.println("El piloto hace las comprobaciones a la llegada del avion " + this.id);
+                escritor.escribir("El piloto hace las comprobaciones a la llegada del avion " + this.id);
                 Thread.sleep(1000 + r.nextInt(4001));
                 
                 // va al taller
@@ -145,7 +151,7 @@ public class Avion extends Thread {
                 if(decision==1){
                     aerDestino.pasarHangar(this);
                     Thread.sleep(r.nextInt(15001) + 15000);
-                    System.out.println("Avion " + this.id + " esta descansando en el taller.");
+                    escritor.escribir("Avion " + this.id + " esta descansando en el taller.");
                 }
                 
                 // se repite el ciclo

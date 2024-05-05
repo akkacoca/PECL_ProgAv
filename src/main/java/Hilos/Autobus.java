@@ -1,6 +1,7 @@
 package Hilos;
 
 import Aeropuerto.Aeropuerto;
+import Main.Escritor;
 import Main.Pantalla;
 import java.util.Random;
 import Main.Paso;
@@ -13,8 +14,10 @@ public class Autobus extends Thread {
     private int aforoBus;
     private Random r = new Random();
     private Pantalla pantalla;
+    private final Escritor escritor;
 
-    public Autobus(String id, Aeropuerto aeropuerto, Paso paso, Pantalla pantalla) {
+    public Autobus(String id, Aeropuerto aeropuerto, Paso paso, Pantalla pantalla, Escritor escritor) {
+        this.escritor = escritor;
         this.id = id;
         this.aforoBus = 50;
         this.aeropuerto = aeropuerto;
@@ -42,13 +45,13 @@ public class Autobus extends Thread {
                 Thread.sleep(r.nextInt(5001) + 5000);
                 //dejar pasajeros en el aeropuerto
                 aeropuerto.aumentarPasajeros(pasajeros);
-                System.out.println("El autobus " + this.id + " deja a " + pasajeros + " en el aeropuerto " + aeropuerto.getNombre());
+                escritor.escribir("El autobus " + this.id + " deja a " + pasajeros + " en el aeropuerto " + aeropuerto.getNombre());
                 pasajeros = 0;
                 //espera a que suban pasajeros en el aeropuerto
                 Thread.sleep(r.nextInt(3001) + 2000);
                 //suben pasajeros en el aeropuerto
                 pasajeros = r.nextInt(Math.min(aeropuerto.getPasajeros() + 1, aforoBus));
-                System.out.println("El autobus " + this.id + " recoje a " + pasajeros + " en el aeropuerto " + aeropuerto.getNombre());
+                escritor.escribir("El autobus " + this.id + " recoje a " + pasajeros + " en el aeropuerto " + aeropuerto.getNombre());
                 aeropuerto.disminuirPasajeros(pasajeros);
                 
                 if (this.aeropuerto.getNombre() == "Madrid"){

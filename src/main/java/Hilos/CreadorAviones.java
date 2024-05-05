@@ -2,6 +2,7 @@ package Hilos;
 
 import Aeropuerto.Aeropuerto;
 import Aeropuerto.Aerovia;
+import Main.Escritor;
 import Main.Pantalla;
 import Main.Paso;
 import java.util.Random;
@@ -9,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CreadorAviones extends Thread{
-    
+    private final Escritor escritor;
     private Aeropuerto aerM;
     private Aeropuerto aerB;
     private Paso paso;
@@ -18,7 +19,8 @@ public class CreadorAviones extends Thread{
     private Aerovia AreoviaMB;
     private Aerovia AreoviaBM;
     
-    public CreadorAviones(Aeropuerto aerM, Aeropuerto aerB, Paso paso, Pantalla pantalla, Aerovia AreoviaMB, Aerovia AreoviaBM) {
+    public CreadorAviones(Aeropuerto aerM, Aeropuerto aerB, Paso paso, Pantalla pantalla, Aerovia AreoviaMB, Aerovia AreoviaBM, Escritor escritor) {
+        this.escritor = escritor;
         this.aerB = aerB;
         this.aerM = aerM;
         this.paso = paso;
@@ -38,10 +40,10 @@ public class CreadorAviones extends Thread{
     
             // Usar el ID para crear y empezar un avión
             if (i % 2 == 0) {
-                Avion a = new Avion(id, aerM, aerB, AreoviaMB, AreoviaBM);
+                Avion a = new Avion(id, aerM, aerB, AreoviaMB, AreoviaBM, escritor, paso);
                 a.start();
             } else {
-                Avion a = new Avion(id, aerB, aerM, AreoviaMB, AreoviaBM);
+                Avion a = new Avion(id, aerB, aerM, AreoviaMB, AreoviaBM, escritor, paso);
                 a.start();
             }
             try {

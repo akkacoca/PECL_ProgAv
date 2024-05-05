@@ -2,12 +2,18 @@
 package Aeropuerto;
 
 import Hilos.Avion;
+import Main.Escritor;
+import Main.Paso;
 import java.util.ArrayList;
 
 public class AreaRodaje {
     private ArrayList<String> aviones;
-
-    public AreaRodaje() {
+    private final Escritor escritor;
+    private final Paso paso;
+    
+    public AreaRodaje(Escritor escritor, Paso paso) {
+        this.paso = paso;
+        this.escritor = escritor;
         this.aviones = new ArrayList<>();
     }
     
@@ -16,10 +22,10 @@ public class AreaRodaje {
     }
     public void entrar(Avion avion){
         aviones.add(avion.getID());
-        System.out.println("Avion " + avion.getID() + " entra al Area de rodaje.");
+        escritor.escribir("Avion " + avion.getID() + " entra al Area de rodaje.");
     }
     public void salir(Avion avion){
         aviones.remove(avion.getID());
-        System.out.println("Avion " + avion.getID() + " sale del Area de rodaje.");
+        escritor.escribir("Avion " + avion.getID() + " sale del Area de rodaje.");
     }
 }

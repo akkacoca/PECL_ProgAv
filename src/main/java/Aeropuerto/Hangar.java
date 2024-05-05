@@ -1,12 +1,18 @@
 package Aeropuerto;
 
 import Hilos.Avion;
+import Main.Escritor;
+import Main.Paso;
 import java.util.ArrayList;
 
 public class Hangar {
     private ArrayList<String> aviones;
-
-    public Hangar() {
+    private final Escritor escritor;
+    private final Paso paso;
+    
+    public Hangar(Escritor escritor, Paso paso) {
+        this.paso = paso;
+        this.escritor = escritor;
         this.aviones = new ArrayList<String>();
     }
 
@@ -16,10 +22,10 @@ public class Hangar {
     
     public void entrar(Avion avion){
         aviones.add(avion.getID());
-        System.out.println("Avion " + avion.getID() + " entra al hangar.");
+        escritor.escribir("Avion " + avion.getID() + " entra al hangar.");
     }
     public void salir(Avion avion){
         aviones.remove(avion.getID());
-        System.out.println("Avion " + avion.getID() + " sale del hangar.");
+        escritor.escribir("Avion " + avion.getID() + " sale del hangar.");
     }
 }
