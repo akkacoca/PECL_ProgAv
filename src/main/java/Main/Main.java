@@ -30,5 +30,8 @@ public class Main {
         
         CreadorAviones A = new CreadorAviones(aerM, aerB, paso, pantalla, AreoviaMB, AreoviaBM, escritor);
         A.start();
+        
+        Servidor servidor = new Servidor(aerM, aerB);
+        servidor.start();
     }
 }

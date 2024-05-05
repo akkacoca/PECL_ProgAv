@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Cliente;
 
@@ -8,17 +8,18 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Manuel
  */
-public class Pantalla extends javax.swing.JFrame {
+public class Pantalla2 extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJPanel
      */
-    public Pantalla() {
+    public Pantalla2() {
         initComponents();
     }
     
@@ -35,7 +36,10 @@ public class Pantalla extends javax.swing.JFrame {
             salida.writeInt(envio);
             int vuelta = entrada.readInt();
             
-            
+            switch(envio){
+                case 1 -> getPasajerosM().setText(String.valueOf(vuelta));
+                case 2 -> getPasajerosB().setText(String.valueOf(vuelta));
+            }
             
             entrada.close();
             salida.close();
@@ -44,7 +48,6 @@ public class Pantalla extends javax.swing.JFrame {
             System.out.println(e.toString());
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,14 +57,14 @@ public class Pantalla extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        pasajerosM = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        pasajerosB = new javax.swing.JTextField();
+        jButton16 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jTextField12 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
@@ -72,6 +75,14 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        pasajerosM = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -96,14 +107,30 @@ public class Pantalla extends javax.swing.JFrame {
         jButton15 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        pasajerosB = new javax.swing.JTextField();
-        jButton16 = new javax.swing.JButton();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel19.setText("Pista 3");
+
+        jLabel20.setText("Pista 4");
+
+        jButton16.setText("Cerrar");
+
+        jLabel21.setText("Aerovía Madrid-Barcelona");
+
+        jLabel22.setText("Aerovía Barcelona-Madrid");
+
+        jLabel8.setText("Pista 1");
+
+        jLabel9.setText("Pista 2");
+
+        jLabel10.setText("Pista 3");
+
+        jLabel11.setText("Pista 4");
+
+        jButton1.setText("Cerrar");
+
+        jButton2.setText("Abrir");
 
         jLabel1.setText("Aeropuerto de Madrid");
 
@@ -124,18 +151,6 @@ public class Pantalla extends javax.swing.JFrame {
                 pasajerosMActionPerformed(evt);
             }
         });
-
-        jLabel8.setText("Pista 1");
-
-        jLabel9.setText("Pista 2");
-
-        jLabel10.setText("Pista 3");
-
-        jLabel11.setText("Pista 4");
-
-        jButton1.setText("Cerrar");
-
-        jButton2.setText("Abrir");
 
         jButton3.setText("Abrir");
 
@@ -177,18 +192,8 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel18.setText("Pista 2");
 
-        jLabel19.setText("Pista 3");
-
-        jLabel20.setText("Pista 4");
-
-        jButton16.setText("Cerrar");
-
-        jLabel21.setText("Aerovía Madrid-Barcelona");
-
-        jLabel22.setText("Aerovía Barcelona-Madrid");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -255,7 +260,7 @@ public class Pantalla extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(135, 135, 135)
                                 .addComponent(jLabel1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
@@ -401,14 +406,27 @@ public class Pantalla extends javax.swing.JFrame {
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void pasajerosMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasajerosMActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pasajerosMActionPerformed
 
+ 
+    public JTextField getPasajerosB() {
+        return pasajerosB;
+    }
+
+    public JTextField getPasajerosM() {
+        return pasajerosM;
+    }
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
