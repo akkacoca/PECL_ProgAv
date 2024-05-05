@@ -13,10 +13,10 @@ public class PuertaEmbarque {
     private final Paso paso;
     private int numero;
     private boolean ocupada;
-    private Queue<Avion> colaEspera;
+    private Queue<Avion> colaEspera; // Cola de espera para acceder a la puerta
     private String tipo; // Puede ser "general", "embarque" o "desembarque"
-    private Lock lock;
-    private Condition condition;
+    private Lock lock; // Cerrojo para controlar el acceso concurrente a la puerta
+    private Condition condition; // Condición para esperar hasta que la puerta esté disponible
     private Aeropuerto aeropuerto;
 
     public PuertaEmbarque(int numero, String tipo, Aeropuerto aeropuerto, Paso paso) {
@@ -42,32 +42,36 @@ public class PuertaEmbarque {
         return ocupada;
     }
 
+    // Método para que un avión solicite acceso a la puerta
     public Avion solicitarAcceso(Avion avion) throws InterruptedException {
-        lock.lock();
+        lock.lock(); // Adquirir el bloqueo
         try {
-            colaEspera.offer(avion);
+            colaEspera.offer(avion); // Agregar el avión a la cola de espera
+            // Esperar hasta que la pista esté disponible o el avión sea el siguiente en la cola
             while (ocupada || colaEspera.peek() != avion) {
-                condition.await();
+                condition.await(); // Esperar hasta ser señalado
             }
-            ocupada = true;
-            avion = colaEspera.poll();
+            ocupada = true; // Marcar la pista como ocupada
+            avion = colaEspera.poll(); // Eliminar el avión de la cola de espera
             
         } finally {
-            lock.unlock();
+            lock.unlock(); // Liberar el bloqueo
         }
         return avion;
     }
 
+    // Método para liberar el acceso a la puerta
     public void liberarAcceso() {
-        lock.lock();
+        lock.lock(); // Adquirir el bloqueo
         try {
-            ocupada = false;
-            condition.signalAll();
-        } finally {
+            ocupada = false; // Marcar la pista como disponible
+            condition.signalAll(); // Señalar a los hilos en espera que la pista está libre
+        } finally { 
             lock.unlock();
         }
     }
 
+    // Método para embarcar pasajeros
     public int embarcarPasajeros(Avion avion) throws InterruptedException {
         Random random = new Random();
         int pasajerosVuelo = 0;
@@ -87,6 +91,7 @@ public class PuertaEmbarque {
         return pasajerosVuelo;
     }
 
+    // Método para desembarcar pasajeros
     public int desembarcarPasajeros(Avion avion) throws InterruptedException {
         Random random = new Random();
         // Simulamos la transferencia de pasajeros al aeropuerto

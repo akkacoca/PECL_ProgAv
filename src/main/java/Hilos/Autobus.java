@@ -27,15 +27,17 @@ public class Autobus extends Thread {
 
     @Override
     public void run() {
-        while (true) {
+        while (true) { // Bucle infinito para simular el funcionamiento del autobús
             try {
-                paso.mirar();
+                paso.mirar(); // Sincroniza el hilo con el Paso
                 
                 //Llegada a la parada de la ciudad
                 Thread.sleep(r.nextInt(3001) + 2000);
+                
                 //suben pasajeros
                 pasajeros = r.nextInt(51);
                 
+                // Actualiza la pantalla con la información del autobús según el aeropuerto de origen
                 if (this.aeropuerto.getNombre() == "Madrid"){
                     this.pantalla.getTransferAeropuertoTextFieldM().setText(id);
                 }
@@ -43,17 +45,22 @@ public class Autobus extends Thread {
                 
                 //viaje al aeropuerto
                 Thread.sleep(r.nextInt(5001) + 5000);
+                
                 //dejar pasajeros en el aeropuerto
                 aeropuerto.aumentarPasajeros(pasajeros);
                 escritor.escribir("El autobus " + this.id + " deja a " + pasajeros + " en el aeropuerto " + aeropuerto.getNombre());
                 pasajeros = 0;
+                
                 //espera a que suban pasajeros en el aeropuerto
                 Thread.sleep(r.nextInt(3001) + 2000);
+                
                 //suben pasajeros en el aeropuerto
+                // Limita la cantidad de pasajeros según la capacidad del autobús y la cantidad de pasajeros disponibles en el aeropuerto
                 pasajeros = r.nextInt(Math.min(aeropuerto.getPasajeros() + 1, aforoBus));
                 escritor.escribir("El autobus " + this.id + " recoje a " + pasajeros + " en el aeropuerto " + aeropuerto.getNombre());
                 aeropuerto.disminuirPasajeros(pasajeros);
                 
+                // Actualiza la pantalla con la información del autobús según el aeropuerto de destino
                 if (this.aeropuerto.getNombre() == "Madrid"){
                     this.pantalla.getTransferCiudadTextFieldM().setText(id);
                 }
@@ -61,7 +68,7 @@ public class Autobus extends Thread {
                 
                 //viaje a la ciudad
                 Thread.sleep(r.nextInt(5001) + 5000);
-                pasajeros = 0;
+                pasajeros = 0; // Reinicia el contador de pasajeros en el autobús
                 
                 
                 

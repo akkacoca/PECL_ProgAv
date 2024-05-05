@@ -12,13 +12,13 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Taller {
-    private Queue<Avion> colaEspera;
+    private Queue<Avion> colaEspera; // Cola de espera para entrar al taller
     private ArrayList<String> aviones;
-    private ArrayList<Boolean> ocupacion;
-    private Lock lock;
-    private Condition condition;
+    private ArrayList<Boolean> ocupacion; // Lista de ocupación de las posiciones de trabajo en el taller
+    private Lock lock; // Cerrojo para sincronización
+    private Condition condition; // Condición de espera para la cola de espera
     private Aeropuerto aeropuerto;
-    private Semaphore semaforoPuerta;
+    private Semaphore semaforoPuerta; // Semáforo para controlar el acceso a la puerta del taller
     private Random r = new Random();
     private final Paso paso;
     
@@ -29,8 +29,10 @@ public class Taller {
         this.lock = new ReentrantLock();
         this.condition = lock.newCondition();
         this.aeropuerto = aeropuerto;
-        semaforoPuerta = new Semaphore(1);
+        // Inicializa el semáforo para controlar el acceso a la puerta del taller
+        semaforoPuerta = new Semaphore(1); 
         this.aviones = new ArrayList<>();
+        // Inicializa la lista de ocupación de las posiciones de trabajo
         this.ocupacion = new ArrayList<>();
         for(int i=0; i<=20; i++){
             ocupacion.add(false);
@@ -41,50 +43,55 @@ public class Taller {
         return aviones;
     }
     
-    
-    
+    // Método para que un avión entre al taller
     public void entrar(Avion avion) throws InterruptedException {
-        semaforoPuerta.acquire();
+        semaforoPuerta.acquire(); // Adquiere el semáforo para controlar el acceso a la puerta
         try{
-            aviones.add(avion.getID());
-            Thread.sleep(1000);
+            aviones.add(avion.getID()); // Agrega el avión a la lista dentro del taller
+            Thread.sleep(1000); // Tiempo que el avión permanece en el taller
         }
         finally{
-            semaforoPuerta.release();
+            semaforoPuerta.release(); // Libera el semáforo después de que el avión sale del taller
         }
     }
     
+    // Método para que un avión salga del taller
     public void salir(Avion avion) throws InterruptedException {
-        semaforoPuerta.acquire();
+        semaforoPuerta.acquire(); // Adquiere el semáforo para controlar el acceso a la puerta
         try{
-            aviones.remove(avion.getID());
+            aviones.remove(avion.getID()); // Elimina el avión de la lista dentro del taller
             Thread.sleep(1000);
         }
         finally{
-            semaforoPuerta.release();
+            semaforoPuerta.release(); // Libera el semáforo después de que el avión sale del taller
         }
     }
     
+    // Método para que un avión solicite acceso al taller
     public void solicitarAcceso(Avion avion) throws InterruptedException{
-        lock.lock();
+        lock.lock(); // Adquiere el cerrojo para sincronización
         try {
-            colaEspera.offer(avion);
+            colaEspera.offer(avion); // Agrega el avión a la cola de espera
             while (!ocupacion.contains(false) || colaEspera.peek() != avion) {
-                condition.await();
+                condition.await(); // Espera hasta que haya una posición de trabajo disponible
             }
+            // Marca la primera posición de trabajo disponible como ocupada
             ocupacion.set(ocupacion.indexOf(false), true);
-            avion = colaEspera.poll();
+            avion = colaEspera.poll(); // Obtiene el avión de la cola de espera
         } finally {
-            lock.unlock();
+            lock.unlock(); // Libera el cerrojo
         }
     }
+    
+    // Método para liberar una posición de trabajo en el taller
     public void liberarAcceso() {
-        lock.lock();
+        lock.lock(); // Adquiere el cerrojo para sincronización
         try {
+            // Marca la primera posición de trabajo ocupada como desocupada
             ocupacion.set(ocupacion.indexOf(true), false);
-            condition.signalAll();
+            condition.signalAll(); // Despierta a todos los hilos en espera
         } finally {
-            lock.unlock();
+            lock.unlock(); // Libera el cerrojo
         }
     }
 }
