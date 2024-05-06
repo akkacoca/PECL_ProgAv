@@ -37,20 +37,18 @@ public class Servidor extends Thread {
         try {
             servidor = new ServerSocket(5000);
             int n = 0;
-            while(n < 10000) {
+            while(n <10000) {
                 
                 conexion = servidor.accept();
                 entrada = new DataInputStream(conexion.getInputStream());
                 salida = new DataOutputStream(conexion.getOutputStream());
                 int envio = entrada.readInt();
                 for(int i = 1; i<=2; i++){
-                    int hola = i;
-                    int vuelta = switch (hola) {
-                        case 1 -> aeropuertoM.getPasajeros();
-                        case 2 -> aeropuertoM.getPasajeros();
-                        default -> aeropuertoM.getPasajeros();
+                    switch (i) {
+                        case 1: salida.writeInt(aeropuertoM.getPasajeros());
+                        case 2: salida.writeInt(aeropuertoB.getPasajeros());
+                        default: aeropuertoM.getPasajeros();
                     };
-                    salida.writeInt(vuelta);
                 }
                 
                 

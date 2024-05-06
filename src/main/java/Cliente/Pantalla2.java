@@ -21,6 +21,7 @@ public class Pantalla2 extends javax.swing.JFrame {
      */
     public Pantalla2() {
         initComponents();
+
     }
     
     public void enviar(int envio) {
@@ -109,6 +110,11 @@ public class Pantalla2 extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jLabel19.setText("Pista 3");
 
@@ -415,6 +421,13 @@ public class Pantalla2 extends javax.swing.JFrame {
     private void pasajerosMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasajerosMActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pasajerosMActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        while(true){
+            enviar(1);
+            enviar(2);
+        }
+    }//GEN-LAST:event_formComponentShown
 
  
     public JTextField getPasajerosB() {
