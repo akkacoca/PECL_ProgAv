@@ -43,18 +43,18 @@ public class CreadorAviones extends Thread{
                 // Crea un avión y lo inicia alternando entre los aeropuertos de Madrid y Barcelona
                 if (i % 2 == 0) {
                     Avion a = new Avion(id, aerM, aerB, AreoviaMB, AreoviaBM, escritor, paso);
-                    escritor.escribir("Avion " + id + " es creado");
+                    escritor.escribir("Avion " + id + " es creado.");
                     a.start();
                 } else {
                     Avion a = new Avion(id, aerB, aerM, AreoviaMB, AreoviaBM, escritor, paso);
-                    escritor.escribir("Avion " + id + " es creado");
+                    escritor.escribir("Avion " + id + " es creado.");
                     a.start();
                 }
                 try {
                     // Espera un tiempo aleatorio antes de crear el siguiente avión
                     Thread.sleep(1000 + r.nextInt(2001));
                 } catch (InterruptedException ex) {
-                    System.out.println("Problema en CreadorAviones");
+                    System.out.println("Problema en CreadorAviones.");
                 }
                 
             } catch (InterruptedException ex) {

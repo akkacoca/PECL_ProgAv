@@ -1,4 +1,3 @@
-
 package Main;
 
 import javax.swing.*;
@@ -9,7 +8,7 @@ public class Pantalla extends javax.swing.JFrame {
     
     private final Escritor escritor;
     private final Paso paso;
-    private boolean parado;
+    private boolean parado; // Variable para indicar si el sistema está detenido o no
     
     public Pantalla(Escritor escritor, Paso paso) {
         this.escritor = escritor;
@@ -924,14 +923,20 @@ public class Pantalla extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPararActionPerformed
+        // Registra en el escritor que el sistema ha sido detenido
         escritor.escribir("SISTEMA DETENIDO");
+        // Cierra el paso para detener el flujo de ejecución de los hilos
         paso.cerrar();
+        // Actualiza la variable parado a true
         parado = true;
     }//GEN-LAST:event_BotonPararActionPerformed
 
     private void BotonReanudarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReanudarActionPerformed
+        // Registra en el escritor que el sistema ha sido reanudado
         escritor.escribir("SISTEMA REANUDADO");
+        // Abre el paso para reanudar el flujo de ejecución de los hilos
         paso.abrir();
+        // Actualiza la variable parado a false
         parado = false;
     }//GEN-LAST:event_BotonReanudarActionPerformed
 

@@ -175,18 +175,21 @@ public class Aeropuerto {
     }
     
     public int accederPuertaEmbarque(Avion avion) throws InterruptedException {
+        // Bucle infinito para intentar acceder a una puerta de embarque
         while(true){
+            // Recorre todas las puertas de embarque disponibles
             for (PuertaEmbarque puerta : puertasEmbarque) {
                 paso.mirar();
-                
+                // Verifica si la puerta de embarque no está ocupada y es adecuada para el avión
                 if (!puerta.isOcupada()){
                     if ((puerta.getTipo().equals("general") || puerta.getTipo().equals(avion.getTipoOperacion())) && (!puerta.isOcupada() || puerta.getTipo().equals(avion.getTipoOperacion()))) {
                         
                         try {
+                            // Avisa que el avión solicita acceso a la puerta de embarque
                             paso.mirar();
-                            
                             puerta.solicitarAcceso(avion);
                             
+                            // Si es una operación de embarque, el avión sale del área correspondiente
                             if(avion.getTipoOperacion().equals("embarque")){
                                 this.areaEstacionamiento.salir(avion);
                                 if (this.nombre == "Madrid"){
@@ -202,6 +205,7 @@ public class Aeropuerto {
                                 else {this.pantalla.getRodajeTextFieldM().setText(ArrayListToString(this.areaRodaje.getAviones()));}
                             }
 
+                            // Registra la acción en el log y en la interfaz de usuario
                             escritor.escribir("Avion " + avion.getID() + " accede a la Puerta de Embarque " + puerta.getNumero());
 
                             switch (puerta.getNumero()){
@@ -231,6 +235,7 @@ public class Aeropuerto {
                             }
                             paso.mirar();
                             
+                            // Realiza la operación de embarque o desembarque según el tipo de operación del avión
                             if (avion.TipoOperacion.equals("embarque")) {
                                 int n = puerta.embarcarPasajeros(avion);
                                 escritor.escribir("El avion " + avion.getID() + " embarca " + n + " pasajeros.");
@@ -240,6 +245,7 @@ public class Aeropuerto {
                                 escritor.escribir("El avion " + avion.getID() + " desembarca " + n + " pasajeros.");
                             }
                             
+                            // Retorna el número de la puerta de embarque a la que accedió el avión
                             return puerta.getNumero();
 
                         } catch (InterruptedException e) {
@@ -252,6 +258,7 @@ public class Aeropuerto {
     }
 
     public void liberarPuertaEmbarque(int numeroPuerta) throws InterruptedException {
+        // Se verifica que la puerta de embarque esté libre y se libera
         paso.mirar();
         switch (numeroPuerta){
             case 1: if (this.nombre == "Madrid"){
@@ -280,6 +287,7 @@ public class Aeropuerto {
         }
         paso.mirar();
         
+        // Se libera la puerta de embarque
         PuertaEmbarque puerta = puertasEmbarque.get(numeroPuerta - 1);
         puerta.liberarAcceso();
         
@@ -291,13 +299,15 @@ public class Aeropuerto {
             for (Pista pista : pistas) {
                 
                 paso.mirar();
-                
+                // Verifica si la pista está libre
                 if (!pista.isOcupada()){
                     try {
                         paso.mirar();
-                        pista.solicitarAcceso(avion);
+                        pista.solicitarAcceso(avion); // Solicita acceso a la pista
                         
+                        // Realiza acciones dependiendo del tipo de operación del avión
                         if(avion.getTipoOperacion().equals("embarque")){
+                            // Si el avión está en embarque, sale del área de rodaje
                             this.areaRodaje.salir(avion);
                             if (this.nombre == "Madrid"){
                                 this.pantalla.getRodajeTextFieldM().setText(ArrayListToString(this.areaRodaje.getAviones()));
@@ -305,6 +315,7 @@ public class Aeropuerto {
                             else {this.pantalla.getRodajeTextFieldB().setText(ArrayListToString(this.areaRodaje.getAviones()));}
                         }
                         else{
+                            // Si el avión está en desembarque, sale de la aerovía actual
                             Aerovia aerovia = avion.getAeroviaActual();
                             avion.getAeroviaActual().salir(avion);
                             if (this.nombre == "Madrid"){
@@ -315,6 +326,7 @@ public class Aeropuerto {
                         
                         escritor.escribir("Avion " + avion.getID() + "(" + avion.getPasajeros() + ") " + " accede a la pista " + pista.getNumero());
 
+                        // Actualiza la visualización en la pantalla
                         switch (pista.getNumero()){
                             case 1: if (this.nombre == "Madrid"){
                                         this.pantalla.getPista1TextFieldM().setText(avion.getID() + "(" + avion.getPasajeros() + ")");
@@ -334,6 +346,7 @@ public class Aeropuerto {
                         }
                         paso.mirar();
                         
+                        // Realiza comprobaciones finales si es un avión en embarque
                         if (avion.getTipoOperacion().equals("embarque")){
                             escritor.escribir("El piloto hace las últimas comprobaciones");
                             Thread.sleep(1000+ r.nextInt(2001));
@@ -346,6 +359,7 @@ public class Aeropuerto {
                     }
                 }     
             }
+            // Si es un avión en desembarque, se le da un rodeo en caso de no conseguir pista
             if(avion.getTipoOperacion().equals("desembarque")){
                 escritor.escribir("El avion " + avion.getID() + "(" + avion.getPasajeros() + ") " + " no ha podido conseguir pista, da un rodeo.");
                 Thread.sleep(1000+ r.nextInt(4001));
@@ -356,7 +370,7 @@ public class Aeropuerto {
     public void liberarPista(int numeroPista) throws InterruptedException {
         
         paso.mirar();
-        
+        // Actualiza la visualización en la pantalla
         switch (numeroPista){
             case 1: if (this.nombre == "Madrid"){
                         this.pantalla.getPista1TextFieldM().setText("");
@@ -375,7 +389,7 @@ public class Aeropuerto {
                     }else {this.pantalla.getPista4TextFieldB().setText("");}
         }
         paso.mirar();
-        
+        // Libera la pista
         Pista pista = pistas.get(numeroPista - 1);
         pista.liberarAcceso();
         
@@ -386,10 +400,13 @@ public class Aeropuerto {
         
         paso.mirar();
         
+        // Libera la pista utilizada por el avión
         liberarPista(avion.getPista());
         
+        // Incrementa el contador de vuelos del avión
         avion.setnVuelos(avion.getnVuelos() + 1);
         
+        // Accede a la aerovía correspondiente al aeropuerto
         if(this.nombre.equals("Madrid")){
             AreoviaMB.entrar(avion);
             this.pantalla.getAeroviaMBTextField().setText(ArrayListToString(AreoviaMB.getAviones()));
@@ -407,21 +424,25 @@ public class Aeropuerto {
         
         paso.mirar();
         
+        // El avión solicita acceso al taller
         this.taller.solicitarAcceso(avion);
         this.taller.entrar(avion);
         
+        // El avión sale del área de rodaje y actualiza la pantalla
         this.areaRodaje.salir(avion);
         if (this.nombre == "Madrid"){
             this.pantalla.getEstacionamientoTextFieldM().setText(ArrayListToString(this.areaRodaje.getAviones()));
         }
         else {this.pantalla.getEstacionamientoTextFieldB().setText(ArrayListToString(this.areaRodaje.getAviones()));}
         
+        // Actualiza la pantalla con los aviones en el taller
         if (this.nombre == "Madrid"){
             this.pantalla.getTallerTextFieldM().setText(ArrayListToString(this.taller.getAviones()));
         }else {this.pantalla.getTallerTextFieldB().setText(ArrayListToString(this.taller.getAviones()));}
         
         paso.mirar();
         
+        // Realiza la revisión en el taller según el tipo especificado
         if (tipoRevision.equals("profunda")){
             Thread.sleep(r.nextInt(5001) + 5000);
             escritor.escribir("Avion " + avion.getID() + " esta haciendo la revision en profundidad en el taller.");
@@ -432,6 +453,7 @@ public class Aeropuerto {
         }
         paso.mirar();
         
+        // El avión sale del taller y libera el acceso
         this.taller.salir(avion);
         this.taller.liberarAcceso();
     }

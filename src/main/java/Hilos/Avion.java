@@ -41,7 +41,113 @@ public class Avion extends Thread {
         
     }
 
-    public int getCapacidadMax() {
+
+    @Override
+    public void run() {
+        try{
+            //se genera el avion en el hangar
+            aerOrigen.pasarHangar(this);
+            
+            while (true) {
+                paso.mirar();
+                this.TipoOperacion = "embarque";
+                
+                //el avion pasa a el area de estacionamiento
+                aerOrigen.pasarAreaE(this);
+                paso.mirar();
+                
+                //el avion trata de acceder a la puerta de embarque y embarcar o desembarcar pasajeros
+                nPuerta = aerOrigen.accederPuertaEmbarque(this);
+                paso.mirar();
+                
+                //el avion sale de la puerta de embarque y accede al area de rodaje
+                aerOrigen.pasarAreaR(this);
+                paso.mirar();
+                
+                //el piloto hace las comprobaciones
+                escritor.escribir("El piloto hace las primeras comprobaciones del avion " + this.id);
+                Thread.sleep(1000 + r.nextInt(4001));
+                paso.mirar();
+
+                //se solicita acceso a pista y entra
+                nPista = aerOrigen.accederPista(this);
+                paso.mirar();
+                
+                //despegue
+                Thread.sleep(1000 + r.nextInt(4001));
+                
+                //Entrar aerovia
+                AeroviaActual = aerOrigen.accederAerovia(this);
+                paso.mirar();
+
+                //Cambiar la operacion del avion
+                this.TipoOperacion = "desembarque";
+                paso.mirar();
+                
+                //VUELO
+                escritor.escribir("Avion " + this.id + "(" + this.pasajeros + ") " + " volando en " + AeroviaActual.getNombre());
+                paso.mirar();
+                Thread.sleep(15000 + r.nextInt(30001));
+
+                // Solicita la pista y aterriza
+                nPista = aerDestino.accederPista(this);
+                paso.mirar();
+                Thread.sleep(1000 + r.nextInt(4001));
+                paso.mirar();
+                escritor.escribir("Avion " + this.id + "(" + this.pasajeros + ") " + " ha aterrizado en la pista " + nPista); 
+
+                // Pasa al area de rodaje
+                aerDestino.pasarAreaR(this);
+                paso.mirar();
+                // Accede a la puerta de embarque y desembarca pasageros
+                Thread.sleep(r.nextInt(3000 + 2001));
+
+                nPuerta = aerDestino.accederPuertaEmbarque(this);
+                
+                // Accede al area de estacionamiento
+                aerDestino.pasarAreaE(this);
+                escritor.escribir("El piloto hace las comprobaciones a la llegada del avion " + this.id + "(" + this.pasajeros + ") ");
+                paso.mirar();
+                Thread.sleep(1000 + r.nextInt(4001));
+                paso.mirar();
+                
+                // va al taller
+                if(nVuelos >= 15){
+                    aerDestino.pasarTaller(this, "profunda");
+                }
+                else{
+                    aerDestino.pasarTaller(this, "rapida");
+                }
+                paso.mirar();
+                
+                //decide si ir reposar o continua
+                int decision = r.nextInt(2) + 1;
+                if(decision==1){
+                    aerDestino.pasarHangar(this);
+                    paso.mirar();
+                    Thread.sleep(r.nextInt(15001) + 15000);
+                    paso.mirar();
+                    escritor.escribir("Avion " + this.id + " está descansando en el hangar.");
+                }
+                
+                // se repite el ciclo
+                Aeropuerto aux = aerOrigen;
+                aerOrigen = aerDestino;
+                aerDestino = aux;
+            }
+        }
+        catch (InterruptedException e){}
+    }
+    
+    public void embarcarPasajeros(int cantidad) {
+        pasajeros += cantidad;
+    }
+
+    public void desembarcarPasajeros(int cantidad) {
+        pasajeros -= cantidad;
+    }
+    
+        public int getCapacidadMax() {
         return capacidadMax;
     }
 
@@ -84,106 +190,4 @@ public class Avion extends Thread {
         this.nVuelos = nVuelos;
     }
     
-    @Override
-    public void run() {
-        try{
-            //se genera el avion en el hangar
-            aerOrigen.pasarHangar(this);
-            while (true) {
-                paso.mirar();
-                this.TipoOperacion = "embarque";
-                
-                //el avion pasa a el area de estacionamiento
-                aerOrigen.pasarAreaE(this);
-                paso.mirar();
-                
-                //el avion trata de acceder a la puerta de embarque y embarcar o desembarcar pasajeros
-                nPuerta = aerOrigen.accederPuertaEmbarque(this);
-                paso.mirar();
-                
-                //el avion sale de la puerta de embarque y accede al area de rodaje
-                aerOrigen.pasarAreaR(this);
-                paso.mirar();
-                
-                //el piloto hace las comprobaciones
-                escritor.escribir("El piloto hace las primeras comprobaciones del avion " + this.id);
-                Thread.sleep(1000 + r.nextInt(4001));
-                paso.mirar();
-
-                //se solicita acceso a pista y entra
-                nPista = aerOrigen.accederPista(this);
-                paso.mirar();
-                
-                //despegue
-                Thread.sleep(1000 + r.nextInt(4001));
-                
-                //Entrar aerovia
-                AeroviaActual = aerOrigen.accederAerovia(this);
-                paso.mirar();
-
-                //Cambiar la operacion del avion
-                this.TipoOperacion = "desembarque";
-                paso.mirar();
-                //VUELO
-                escritor.escribir("Avion " + this.id + "(" + this.pasajeros + ") " + " volando en " + AeroviaActual.getNombre());
-                paso.mirar();
-                Thread.sleep(15000 + r.nextInt(30001));
-
-
-                // Solicita la pista y aterriza
-                nPista = aerDestino.accederPista(this);
-                paso.mirar();
-                Thread.sleep(1000 + r.nextInt(4001));
-                paso.mirar();
-                escritor.escribir("Avion " + this.id + "(" + this.pasajeros + ") " + " ha aterrizado en la pista " + nPista); 
-
-
-                // Pasa al area de rodaje
-                aerDestino.pasarAreaR(this);
-                paso.mirar();
-                // Accede a la puerta de embarque y desembarca pasageros
-                Thread.sleep(r.nextInt(3000 + 2001));
-
-                nPuerta = aerDestino.accederPuertaEmbarque(this);
-                
-                // Accede al area de estacionamiento
-                aerDestino.pasarAreaE(this);
-                escritor.escribir("El piloto hace las comprobaciones a la llegada del avion " + this.id + "(" + this.pasajeros + ") ");
-                paso.mirar();
-                Thread.sleep(1000 + r.nextInt(4001));
-                paso.mirar();
-                
-                // va al taller
-                if(nVuelos >= 15){
-                    aerDestino.pasarTaller(this, "profunda");
-                }
-                else{
-                    aerDestino.pasarTaller(this, "rapida");
-                }
-                paso.mirar();
-                //decide si ir reposar o continua
-                int decision = r.nextInt(2) + 1;
-                if(decision==1){
-                    aerDestino.pasarHangar(this);
-                    paso.mirar();
-                    Thread.sleep(r.nextInt(15001) + 15000);
-                    paso.mirar();
-                    escritor.escribir("Avion " + this.id + " esta descansando en el hangar.");
-                }
-                // se repite el ciclo
-                Aeropuerto aux = aerOrigen;
-                aerOrigen = aerDestino;
-                aerDestino = aux;
-            }
-        }
-        catch (InterruptedException e){}
-    }
-    
-    public void embarcarPasajeros(int cantidad) {
-        pasajeros += cantidad;
-    }
-
-    public void desembarcarPasajeros(int cantidad) {
-        pasajeros -= cantidad;
-    }
 }
