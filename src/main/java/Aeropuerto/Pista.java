@@ -40,9 +40,11 @@ public class Pista {
     public Avion solicitarAcceso(Avion avion) throws InterruptedException {
         lock.lock(); // Adquirir el bloqueo
         try {
+            paso.mirar();
             colaEspera.add(avion); // Agregar el avión a la cola
             // Esperar hasta que la pista esté disponible o el avión sea el siguiente en la cola
             while (ocupada || colaEspera.peek() != avion) {
+                paso.mirar();
                 condition.await(); // Esperar hasta ser señalado
             }
             ocupada = true; // Marcar la pista como ocupada
@@ -55,31 +57,14 @@ public class Pista {
     }
 
     // Método para liberar el acceso a la pista
-    public void liberarAcceso() {
+    public void liberarAcceso() throws InterruptedException {
         lock.lock(); // Adquirir el bloqueo
         try {
+            paso.mirar();
             ocupada = false; // Marcar la pista como disponible
             condition.signalAll(); // Señalar a los hilos en espera que la pista está libre
         } finally {
             lock.unlock();
         }
-    }
-    
-    
-    
-    public Avion solicitarAccesoAterrizar(Avion avion) throws InterruptedException {
-        lock.lock();
-        try {
-            colaEspera.add(avion);
-            while (ocupada || colaEspera.peek() != avion) {
-                condition.await();
-            }
-            ocupada = true;
-            avion = colaEspera.remove();
-            
-        } finally {
-            lock.unlock();
-        }
-        return avion;
     }
 }

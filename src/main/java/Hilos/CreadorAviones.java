@@ -33,24 +33,29 @@ public class CreadorAviones extends Thread{
         Random r = new Random();
 
         for (int i = 1; i <= 8000; i++) {
-            // Genera un identificador único para el avión
-            char letra1 = (char) ('A' + r.nextInt(26));
-            char letra2 = (char) ('A' + r.nextInt(26));
-            String id = String.format("%c%c-%04d", letra1, letra2, i);
-    
-            // Crea un avión y lo inicia alternando entre los aeropuertos de Madrid y Barcelona
-            if (i % 2 == 0) {
-                Avion a = new Avion(id, aerM, aerB, AreoviaMB, AreoviaBM, escritor, paso);
-                a.start();
-            } else {
-                Avion a = new Avion(id, aerB, aerM, AreoviaMB, AreoviaBM, escritor, paso);
-                a.start();
-            }
             try {
-                // Espera un tiempo aleatorio antes de crear el siguiente avión
-                Thread.sleep(1000 + r.nextInt(2001));
+                paso.mirar();
+                // Genera un identificador único para el avión
+                char letra1 = (char) ('A' + r.nextInt(26));
+                char letra2 = (char) ('A' + r.nextInt(26));
+                String id = String.format("%c%c-%04d", letra1, letra2, i);
+                
+                // Crea un avión y lo inicia alternando entre los aeropuertos de Madrid y Barcelona
+                if (i % 2 == 0) {
+                    Avion a = new Avion(id, aerM, aerB, AreoviaMB, AreoviaBM, escritor, paso);
+                    a.start();
+                } else {
+                    Avion a = new Avion(id, aerB, aerM, AreoviaMB, AreoviaBM, escritor, paso);
+                    a.start();
+                }
+                try {
+                    // Espera un tiempo aleatorio antes de crear el siguiente avión
+                    Thread.sleep(1000 + r.nextInt(2001));
+                } catch (InterruptedException ex) {
+                    System.out.println("Problema en CreadorAviones");
+                }
             } catch (InterruptedException ex) {
-                System.out.println("Problema en CreadorAviones");
+                Logger.getLogger(CreadorAviones.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

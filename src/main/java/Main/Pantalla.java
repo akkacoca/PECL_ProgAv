@@ -450,7 +450,7 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
 
-        jLabel44.setText("Nº de pasageros en el aeropuerto: ");
+        jLabel44.setText("Nº de pasajeros en el aeropuerto: ");
 
         PasajerosTextFieldB.setEditable(false);
         PasajerosTextFieldB.addActionListener(new java.awt.event.ActionListener() {
@@ -555,7 +555,7 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel60.setText("Gate 5:");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Aeriovía Madird-Barcelona");
+        jLabel2.setText("Aerovía Madird-Barcelona");
 
         AeroviaMBTextField.setEditable(false);
         AeroviaMBTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -565,7 +565,7 @@ public class Pantalla extends javax.swing.JFrame {
         });
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Aeriovía Barcelona-Madrid");
+        jLabel5.setText("Aerovía Barcelona-Madrid");
 
         AeroviaBMTextField.setEditable(false);
 
@@ -924,22 +924,13 @@ public class Pantalla extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPararActionPerformed
-        /*escritor.escribir("SISTEMA DETENIDO");*/
-        if (parado) {
-            escritor.escribir("SISTEMA REANUDADO");
-            BotonParar.setText("Parar");
-            paso.abrir();
-            parado = false;
-        } else {
-            escritor.escribir("SISTEMA DETENIDO");
-            BotonParar.setText("Reanudar");
-            paso.cerrar();
-            parado = true;
-        }
+        escritor.escribir("SISTEMA DETENIDO");
+        paso.cerrar();
+        parado = true;
     }//GEN-LAST:event_BotonPararActionPerformed
 
     private void BotonReanudarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReanudarActionPerformed
-        /*escritor.escribir("SISTEMA REANUDADO");*/
+        escritor.escribir("SISTEMA REANUDADO");
         paso.abrir();
         parado = false;
     }//GEN-LAST:event_BotonReanudarActionPerformed

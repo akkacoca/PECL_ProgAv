@@ -46,9 +46,11 @@ public class PuertaEmbarque {
     public Avion solicitarAcceso(Avion avion) throws InterruptedException {
         lock.lock(); // Adquirir el bloqueo
         try {
+            paso.mirar();
             colaEspera.offer(avion); // Agregar el avión a la cola de espera
             // Esperar hasta que la pista esté disponible o el avión sea el siguiente en la cola
             while (ocupada || colaEspera.peek() != avion) {
+                paso.mirar();
                 condition.await(); // Esperar hasta ser señalado
             }
             ocupada = true; // Marcar la pista como ocupada
@@ -61,9 +63,10 @@ public class PuertaEmbarque {
     }
 
     // Método para liberar el acceso a la puerta
-    public void liberarAcceso() {
+    public void liberarAcceso() throws InterruptedException {
         lock.lock(); // Adquirir el bloqueo
         try {
+            paso.mirar();
             ocupada = false; // Marcar la pista como disponible
             condition.signalAll(); // Señalar a los hilos en espera que la pista está libre
         } finally { 
@@ -73,48 +76,46 @@ public class PuertaEmbarque {
 
     // Método para embarcar pasajeros
     public int embarcarPasajeros(Avion avion) throws InterruptedException {
+        paso.mirar();
         Random random = new Random();
         int pasajerosVuelo = 0;
         int intentos = 0;
         while (avion.getPasajeros() < avion.getCapacidadMax() && intentos < 3) {
+            paso.mirar();
+            
             // Transferencia de pasajeros al avión
             int pasajerosTransferidos = Math.min(avion.getCapacidadMax() - avion.getPasajeros(), aeropuerto.getPasajeros());
             pasajerosVuelo += pasajerosTransferidos;
+            
+            paso.mirar();
             avion.embarcarPasajeros(pasajerosTransferidos);
             aeropuerto.disminuirPasajeros(pasajerosTransferidos);
+            
             // Simulamos el tiempo de embarque
+            paso.mirar();
             Thread.sleep(random.nextInt(3000) + 1000);
             // Simulamos la espera para embarcar más pasajeros
+            paso.mirar();
             Thread.sleep(random.nextInt(5000) + 1000);
             intentos++;
+            paso.mirar();
         }
         return pasajerosVuelo;
     }
 
     // Método para desembarcar pasajeros
     public int desembarcarPasajeros(Avion avion) throws InterruptedException {
+        paso.mirar();
         Random random = new Random();
+        
         // Simulamos la transferencia de pasajeros al aeropuerto
         int pasajerosTransferidos = avion.getPasajeros();
         aeropuerto.aumentarPasajeros(pasajerosTransferidos);
-        Thread.sleep(random.nextInt(5000) + 1000); // Simulamos el tiempo de desembarque
+        
+        paso.mirar();
+        // Simulamos el tiempo de desembarque
+        Thread.sleep(random.nextInt(5000) + 1000); 
+        paso.mirar();
         return pasajerosTransferidos;
-    }
-    
-    
-    public Avion solicitarAccesoAterrizar(Avion avion) throws InterruptedException {
-        lock.lock();
-        try {
-            colaEspera.offer(avion);
-            while (ocupada || colaEspera.peek() != avion) {
-                condition.await();
-            }
-            ocupada = true;
-            avion = colaEspera.poll();
-            
-        } finally {
-            lock.unlock();
-        }
-        return avion;
     }
 }

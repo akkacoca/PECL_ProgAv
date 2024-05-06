@@ -27,20 +27,26 @@ public class CreadorBuses extends Thread{
     @Override
     public void run() {
         for (int i=0000; i<=4000; i++){
-            // Crea un autobús y lo inicia alternando entre los aeropuertos de Madrid y Barcelona
-            if(i%2==0){
-                Autobus a = new Autobus("B-"+i, aerM, paso, pantalla, escritor);
-                a.start();
-            }
-            else{
-                Autobus a = new Autobus("B-"+i, aerB, paso, pantalla, escritor);
-                a.start();
-            }
             try {
-                // Espera un tiempo aleatorio antes de crear el siguiente autobús
-                Thread.sleep(500 + r.nextInt(501));
+                paso.mirar();
+                // Crea un autobús y lo inicia alternando entre los aeropuertos de Madrid y Barcelona
+                if(i%2==0){
+                    Autobus a = new Autobus("B-"+i, aerM, paso, pantalla, escritor);
+                    a.start();
+                }
+                else{
+                    Autobus a = new Autobus("B-"+i, aerB, paso, pantalla, escritor);
+                    a.start();
+                }
+                
+                try {
+                    // Espera un tiempo aleatorio antes de crear el siguiente autobús
+                    Thread.sleep(500 + r.nextInt(501));
+                } catch (InterruptedException ex) {
+                    System.out.println("Problema en CreadorBuses");
+                }
             } catch (InterruptedException ex) {
-                System.out.println("Problema en CreadorBuses");
+                Logger.getLogger(CreadorBuses.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

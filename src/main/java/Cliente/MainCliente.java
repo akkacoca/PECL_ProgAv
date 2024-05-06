@@ -6,7 +6,7 @@ public class MainCliente {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Pantalla2 pantalla = new Pantalla2();
+        Pantalla pantalla = new Pantalla();
         pantalla.setVisible(true);
         
         

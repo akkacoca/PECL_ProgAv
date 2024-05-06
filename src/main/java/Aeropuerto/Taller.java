@@ -47,6 +47,7 @@ public class Taller {
     public void entrar(Avion avion) throws InterruptedException {
         semaforoPuerta.acquire(); // Adquiere el semáforo para controlar el acceso a la puerta
         try{
+            paso.mirar();
             aviones.add(avion.getID()); // Agrega el avión a la lista dentro del taller
             Thread.sleep(1000); // Tiempo que el avión permanece en el taller
         }
@@ -59,6 +60,7 @@ public class Taller {
     public void salir(Avion avion) throws InterruptedException {
         semaforoPuerta.acquire(); // Adquiere el semáforo para controlar el acceso a la puerta
         try{
+            paso.mirar();
             aviones.remove(avion.getID()); // Elimina el avión de la lista dentro del taller
             Thread.sleep(1000);
         }
@@ -71,8 +73,10 @@ public class Taller {
     public void solicitarAcceso(Avion avion) throws InterruptedException{
         lock.lock(); // Adquiere el cerrojo para sincronización
         try {
+            paso.mirar();
             colaEspera.offer(avion); // Agrega el avión a la cola de espera
             while (!ocupacion.contains(false) || colaEspera.peek() != avion) {
+                paso.mirar();
                 condition.await(); // Espera hasta que haya una posición de trabajo disponible
             }
             // Marca la primera posición de trabajo disponible como ocupada
@@ -84,9 +88,10 @@ public class Taller {
     }
     
     // Método para liberar una posición de trabajo en el taller
-    public void liberarAcceso() {
+    public void liberarAcceso() throws InterruptedException {
         lock.lock(); // Adquiere el cerrojo para sincronización
         try {
+            paso.mirar();
             // Marca la primera posición de trabajo ocupada como desocupada
             ocupacion.set(ocupacion.indexOf(true), false);
             condition.signalAll(); // Despierta a todos los hilos en espera

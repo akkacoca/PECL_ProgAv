@@ -898,7 +898,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel44">
       <Properties>
-        <Property name="text" type="java.lang.String" value="N&#xba; de pasageros en el aeropuerto: "/>
+        <Property name="text" type="java.lang.String" value="N&#xba; de pasajeros en el aeropuerto: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="PasajerosTextFieldB">
@@ -1082,7 +1082,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Aeriov&#xed;a Madird-Barcelona"/>
+        <Property name="text" type="java.lang.String" value="Aerov&#xed;a Madird-Barcelona"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="AeroviaMBTextField">
@@ -1096,7 +1096,7 @@
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Aeriov&#xed;a Barcelona-Madrid"/>
+        <Property name="text" type="java.lang.String" value="Aerov&#xed;a Barcelona-Madrid"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="AeroviaBMTextField">

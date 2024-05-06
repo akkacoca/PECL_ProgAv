@@ -22,13 +22,17 @@ public class AreaEstacionamiento {
     }
    
     // Método para que un avión entre al Área   
-    public void entrar(Avion avion){
+    public void entrar(Avion avion) throws InterruptedException{
+        paso.mirar();
+        
         aviones.add(avion.getID());
         escritor.escribir("Avion " + avion.getID() + " entra al Area de estacionamiento.");
     }
     
     // Método para que un avión salga del Área   
-    public void salir(Avion avion){
+    public void salir(Avion avion) throws InterruptedException{
+        paso.mirar();
+        
         aviones.remove(avion.getID());
         escritor.escribir("Avion " + avion.getID() + " sale del Area de estacionamiento.");
     }

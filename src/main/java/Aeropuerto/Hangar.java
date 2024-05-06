@@ -22,13 +22,17 @@ public class Hangar {
     }
     
     // Método para que un avión entre al hangar
-    public void entrar(Avion avion){
+    public void entrar(Avion avion) throws InterruptedException{
+        paso.mirar();
+        
         aviones.add(avion.getID());
         escritor.escribir("Avion " + avion.getID() + " entra al hangar.");
     }
     
     // Método para que un avión salga del hangar
-    public void salir(Avion avion){
+    public void salir(Avion avion) throws InterruptedException{
+        paso.mirar();
+        
         aviones.remove(avion.getID());
         escritor.escribir("Avion " + avion.getID() + " sale del hangar.");
     }

@@ -21,13 +21,17 @@ public class AreaRodaje {
     }
     
     // Método para que un avión entre al área de rodaje
-    public void entrar(Avion avion){
-        aviones.add(avion.getID());
+    public void entrar(Avion avion) throws InterruptedException{
+        paso.mirar();
+        
+        aviones.add(avion.getID() + "(" + avion.getPasajeros() + ")" );
         escritor.escribir("Avion " + avion.getID() + " entra al Area de rodaje.");
     }
     
     // Método para que un avión salga del área de rodaje
-    public void salir(Avion avion){
+    public void salir(Avion avion) throws InterruptedException{
+        paso.mirar();
+        
         aviones.remove(avion.getID());
         escritor.escribir("Avion " + avion.getID() + " sale del Area de rodaje.");
     }

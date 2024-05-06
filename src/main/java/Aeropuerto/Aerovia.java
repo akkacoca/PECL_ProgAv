@@ -27,16 +27,18 @@ public class Aerovia {
     }
     
     // Método para que un avión entre a la aerovía
-    public void entrar(Avion avion){
-        aviones.add(avion.getID());
+    public void entrar(Avion avion) throws InterruptedException{
+        paso.mirar();
+        
+        aviones.add(avion.getID() + "(" + avion.getPasajeros() + ")");
         escritor.escribir("Avion " + avion.getID() + " accede a la aerovia " + getNombre());
     }
     
     // Método para que un avión salga de la aerovía
-    public void salir(Avion avion){
+    public void salir(Avion avion) throws InterruptedException{
+        paso.mirar();
+        
         aviones.remove(avion.getID());
         escritor.escribir("Avion " + avion.getID() + " sale de la aerovia." + getNombre());
     }
-    
-    //
 }

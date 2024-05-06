@@ -1,50 +1,274 @@
-05/mayo/2024 | 23:10:35.821924 -> Avion DF-0001 entra al hangar.
-05/mayo/2024 | 23:10:35.853001 -> Avion DF-0001 entra al Area de estacionamiento.
-05/mayo/2024 | 23:10:35.853001 -> Avion DF-0001 sale del hangar.
-05/mayo/2024 | 23:10:35.854506 -> Avion DF-0001 sale del Area de estacionamiento.
-05/mayo/2024 | 23:10:35.854506 -> Avion DF-0001 accede a la Puerta de Embarque 1
-05/mayo/2024 | 23:10:38.688663 -> Avion NR-0002 entra al hangar.
-05/mayo/2024 | 23:10:38.690658 -> Avion NR-0002 entra al Area de estacionamiento.
-05/mayo/2024 | 23:10:38.690658 -> Avion NR-0002 sale del hangar.
-05/mayo/2024 | 23:10:38.691655 -> Avion NR-0002 sale del Area de estacionamiento.
-05/mayo/2024 | 23:10:38.691655 -> Avion NR-0002 accede a la Puerta de Embarque 1
-05/mayo/2024 | 23:10:40.642588 -> Avion CM-0003 entra al hangar.
-05/mayo/2024 | 23:10:40.645235 -> Avion CM-0003 entra al Area de estacionamiento.
-05/mayo/2024 | 23:10:40.645235 -> Avion CM-0003 sale del hangar.
-05/mayo/2024 | 23:10:40.646165 -> Avion CM-0003 sale del Area de estacionamiento.
-05/mayo/2024 | 23:10:40.646165 -> Avion CM-0003 accede a la Puerta de Embarque 2
-05/mayo/2024 | 23:10:42.561346 -> Avion QY-0004 entra al hangar.
-05/mayo/2024 | 23:10:42.562401 -> Avion QY-0004 entra al Area de estacionamiento.
-05/mayo/2024 | 23:10:42.562401 -> Avion QY-0004 sale del hangar.
-05/mayo/2024 | 23:10:42.563406 -> Avion QY-0004 sale del Area de estacionamiento.
-05/mayo/2024 | 23:10:42.563406 -> Avion QY-0004 accede a la Puerta de Embarque 2
-05/mayo/2024 | 23:10:43.942197 -> Avion XH-0005 entra al hangar.
-05/mayo/2024 | 23:10:43.943835 -> Avion XH-0005 entra al Area de estacionamiento.
-05/mayo/2024 | 23:10:43.943835 -> Avion XH-0005 sale del hangar.
-05/mayo/2024 | 23:10:43.944757 -> Avion XH-0005 sale del Area de estacionamiento.
-05/mayo/2024 | 23:10:43.944757 -> Avion XH-0005 accede a la Puerta de Embarque 3
-05/mayo/2024 | 23:10:46.854817 -> Avion TF-0006 entra al hangar.
-05/mayo/2024 | 23:10:46.856329 -> Avion TF-0006 entra al Area de estacionamiento.
-05/mayo/2024 | 23:10:46.856329 -> Avion TF-0006 sale del hangar.
-05/mayo/2024 | 23:10:46.856329 -> Avion TF-0006 sale del Area de estacionamiento.
-05/mayo/2024 | 23:10:46.856329 -> Avion TF-0006 accede a la Puerta de Embarque 3
-05/mayo/2024 | 23:10:47.976227 -> El autobus B-0 deja a 41 en el aeropuerto Madrid
-05/mayo/2024 | 23:10:48.538265 -> El autobus B-3 deja a 11 en el aeropuerto Barcelona
-05/mayo/2024 | 23:10:48.941227 -> El autobus B-2 deja a 17 en el aeropuerto Madrid
-05/mayo/2024 | 23:10:49.392995 -> Avion OO-0007 entra al hangar.
-05/mayo/2024 | 23:10:49.394507 -> Avion OO-0007 entra al Area de estacionamiento.
-05/mayo/2024 | 23:10:49.394507 -> Avion OO-0007 sale del hangar.
-05/mayo/2024 | 23:10:49.394507 -> Avion OO-0007 sale del Area de estacionamiento.
-05/mayo/2024 | 23:10:49.395532 -> Avion OO-0007 accede a la Puerta de Embarque 4
-05/mayo/2024 | 23:10:49.506781 -> El autobus B-6 deja a 4 en el aeropuerto Madrid
-05/mayo/2024 | 23:10:50.721912 -> El autobus B-7 deja a 39 en el aeropuerto Barcelona
-05/mayo/2024 | 23:10:50.810006 -> El autobus B-1 deja a 37 en el aeropuerto Barcelona
-05/mayo/2024 | 23:10:51.323093 -> El autobus B-0 recoje a 0 en el aeropuerto Madrid
-05/mayo/2024 | 23:10:51.340266 -> El autobus B-5 deja a 33 en el aeropuerto Barcelona
-05/mayo/2024 | 23:10:51.591409 -> El autobus B-3 recoje a 20 en el aeropuerto Barcelona
-05/mayo/2024 | 23:10:51.968393 -> Avion PE-0008 entra al hangar.
-05/mayo/2024 | 23:10:51.970388 -> Avion PE-0008 entra al Area de estacionamiento.
-05/mayo/2024 | 23:10:51.970388 -> Avion PE-0008 sale del hangar.
-05/mayo/2024 | 23:10:51.970388 -> Avion PE-0008 sale del Area de estacionamiento.
-05/mayo/2024 | 23:10:51.971387 -> Avion PE-0008 accede a la Puerta de Embarque 4
-05/mayo/2024 | 23:10:52.701939 -> El autobus B-4 deja a 13 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:25.419956 -> Avion KT-0001 entra al hangar.
+06/mayo/2024 | 18:47:25.444684 -> Avion KT-0001 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:25.444684 -> Avion KT-0001 sale del hangar.
+06/mayo/2024 | 18:47:25.445663 -> Avion KT-0001 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:25.445663 -> Avion KT-0001 accede a la Puerta de Embarque 1
+06/mayo/2024 | 18:47:27.334507 -> Avion DL-0002 entra al hangar.
+06/mayo/2024 | 18:47:27.335489 -> Avion DL-0002 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:27.336508 -> Avion DL-0002 sale del hangar.
+06/mayo/2024 | 18:47:27.336508 -> Avion DL-0002 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:27.336508 -> Avion DL-0002 accede a la Puerta de Embarque 1
+06/mayo/2024 | 18:47:28.627756 -> Avion SB-0003 entra al hangar.
+06/mayo/2024 | 18:47:28.629704 -> Avion SB-0003 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:28.629704 -> Avion SB-0003 sale del hangar.
+06/mayo/2024 | 18:47:28.629704 -> Avion SB-0003 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:28.629704 -> Avion SB-0003 accede a la Puerta de Embarque 2
+06/mayo/2024 | 18:47:29.772398 -> Avion AN-0004 entra al hangar.
+06/mayo/2024 | 18:47:29.773376 -> Avion AN-0004 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:29.773376 -> Avion AN-0004 sale del hangar.
+06/mayo/2024 | 18:47:29.774377 -> Avion AN-0004 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:29.774377 -> Avion AN-0004 accede a la Puerta de Embarque 2
+06/mayo/2024 | 18:47:31.691736 -> Avion MW-0005 entra al hangar.
+06/mayo/2024 | 18:47:31.693735 -> Avion MW-0005 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:31.693735 -> Avion MW-0005 sale del hangar.
+06/mayo/2024 | 18:47:31.693735 -> Avion MW-0005 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:31.694733 -> Avion MW-0005 accede a la Puerta de Embarque 3
+06/mayo/2024 | 18:47:33.216182 -> Avion WX-0006 entra al hangar.
+06/mayo/2024 | 18:47:33.217721 -> Avion WX-0006 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:33.218728 -> Avion WX-0006 sale del hangar.
+06/mayo/2024 | 18:47:33.218728 -> Avion WX-0006 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:33.218728 -> Avion WX-0006 accede a la Puerta de Embarque 3
+06/mayo/2024 | 18:47:36.054166 -> Avion KC-0007 entra al hangar.
+06/mayo/2024 | 18:47:36.055081 -> Avion KC-0007 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:36.055081 -> Avion KC-0007 sale del hangar.
+06/mayo/2024 | 18:47:36.056063 -> Avion KC-0007 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:36.056063 -> Avion KC-0007 accede a la Puerta de Embarque 4
+06/mayo/2024 | 18:47:37.161706 -> El autobus B-1 deja a 25 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:38.298707 -> El autobus B-3 deja a 33 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:38.459583 -> El autobus B-0 deja a 38 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:38.469764 -> Avion FJ-0008 entra al hangar.
+06/mayo/2024 | 18:47:38.470734 -> Avion FJ-0008 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:38.470734 -> Avion FJ-0008 sale del hangar.
+06/mayo/2024 | 18:47:38.470734 -> Avion FJ-0008 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:38.471733 -> Avion FJ-0008 accede a la Puerta de Embarque 4
+06/mayo/2024 | 18:47:38.846504 -> El autobus B-4 deja a 43 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:39.431122 -> El autobus B-2 deja a 7 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:39.753965 -> Avion PU-0009 entra al hangar.
+06/mayo/2024 | 18:47:39.754804 -> Avion PU-0009 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:39.755803 -> Avion PU-0009 sale del hangar.
+06/mayo/2024 | 18:47:39.755803 -> Avion PU-0009 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:39.755803 -> Avion PU-0009 accede a la Puerta de Embarque 5
+06/mayo/2024 | 18:47:41.568496 -> El autobus B-3 recoje a 0 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:41.580913 -> El autobus B-10 deja a 33 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:41.842591 -> El autobus B-6 deja a 12 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:41.899815 -> El autobus B-0 recoje a 27 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:42.160932 -> El autobus B-1 recoje a 0 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:42.283996 -> El autobus B-8 deja a 24 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:42.563772 -> Avion RL-0010 entra al hangar.
+06/mayo/2024 | 18:47:42.564750 -> Avion RL-0010 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:42.564750 -> Avion RL-0010 sale del hangar.
+06/mayo/2024 | 18:47:42.564750 -> Avion RL-0010 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:42.564750 -> Avion RL-0010 accede a la Puerta de Embarque 5
+06/mayo/2024 | 18:47:42.924816 -> El autobus B-2 recoje a 0 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:43.017907 -> El autobus B-5 deja a 30 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:43.222776 -> El autobus B-4 recoje a 0 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:43.421931 -> El avion KT-0001 embarca 0 pasajeros.
+06/mayo/2024 | 18:47:43.425885 -> Puerta de embarque 1 del aeropuerto de Barcelona liberada.
+06/mayo/2024 | 18:47:43.425885 -> Avion KT-0001 entra al Area de rodaje.
+06/mayo/2024 | 18:47:43.425885 -> El piloto hace las primeras comprobaciones del avion KT-0001
+06/mayo/2024 | 18:47:43.599731 -> El autobus B-13 deja a 39 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:43.614616 -> El autobus B-9 deja a 7 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:44.002545 -> El autobus B-12 deja a 29 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:44.307554 -> El autobus B-7 deja a 29 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:44.438648 -> El autobus B-6 recoje a 16 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:44.442673 -> Avion BT-0011 entra al hangar.
+06/mayo/2024 | 18:47:44.442673 -> Avion BT-0011 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:44.442673 -> Avion BT-0011 sale del hangar.
+06/mayo/2024 | 18:47:44.443649 -> Avion BT-0011 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:44.443649 -> Avion BT-0011 accede a la Puerta de Embarque 1
+06/mayo/2024 | 18:47:44.454072 -> El autobus B-8 recoje a 4 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:44.463653 -> El avion DL-0002 embarca 50 pasajeros.
+06/mayo/2024 | 18:47:44.463653 -> Puerta de embarque 1 del aeropuerto de Madrid liberada.
+06/mayo/2024 | 18:47:44.463653 -> Avion DL-0002 entra al Area de rodaje.
+06/mayo/2024 | 18:47:44.463653 -> El piloto hace las primeras comprobaciones del avion DL-0002
+06/mayo/2024 | 18:47:45.004769 -> El autobus B-11 deja a 38 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:45.553021 -> Avion LF-0012 entra al hangar.
+06/mayo/2024 | 18:47:45.553021 -> Avion LF-0012 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:45.553021 -> Avion LF-0012 sale del hangar.
+06/mayo/2024 | 18:47:45.554030 -> Avion LF-0012 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:45.554030 -> Avion LF-0012 accede a la Puerta de Embarque 1
+06/mayo/2024 | 18:47:45.979810 -> El autobus B-10 recoje a 0 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:46.386112 -> El autobus B-12 recoje a 0 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:46.386112 -> El autobus B-17 deja a 11 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:46.421717 -> El autobus B-14 deja a 14 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:46.514791 -> El autobus B-5 recoje a 47 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:46.559167 -> El autobus B-9 recoje a 0 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:47.082397 -> El autobus B-15 deja a 31 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:47.444559 -> El autobus B-13 recoje a 23 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:47.911061 -> El avion SB-0003 embarca 0 pasajeros.
+06/mayo/2024 | 18:47:47.911061 -> Puerta de embarque 2 del aeropuerto de Barcelona liberada.
+06/mayo/2024 | 18:47:47.911061 -> Avion SB-0003 entra al Area de rodaje.
+06/mayo/2024 | 18:47:47.911061 -> El piloto hace las primeras comprobaciones del avion SB-0003
+06/mayo/2024 | 18:47:48.077415 -> El autobus B-11 recoje a 4 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:48.251731 -> Avion ED-0013 entra al hangar.
+06/mayo/2024 | 18:47:48.252647 -> Avion ED-0013 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:48.252647 -> Avion ED-0013 sale del hangar.
+06/mayo/2024 | 18:47:48.253651 -> Avion ED-0013 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:48.253651 -> Avion ED-0013 accede a la Puerta de Embarque 2
+06/mayo/2024 | 18:47:48.332756 -> Avion KT-0001 sale del Area de rodaje.
+06/mayo/2024 | 18:47:48.332756 -> Avion KT-0001 accede a la pista 1
+06/mayo/2024 | 18:47:48.333770 -> El piloto hace las últimas comprobaciones
+06/mayo/2024 | 18:47:48.831625 -> El autobus B-16 deja a 44 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:48.905582 -> Avion DL-0002 sale del Area de rodaje.
+06/mayo/2024 | 18:47:48.905582 -> Avion DL-0002 accede a la pista 1
+06/mayo/2024 | 18:47:48.905582 -> El piloto hace las últimas comprobaciones
+06/mayo/2024 | 18:47:49.148443 -> El autobus B-15 recoje a 0 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:49.240819 -> El autobus B-7 recoje a 0 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:49.242843 -> El avion WX-0006 embarca 18 pasajeros.
+06/mayo/2024 | 18:47:49.242843 -> Puerta de embarque 3 del aeropuerto de Madrid liberada.
+06/mayo/2024 | 18:47:49.242843 -> Avion WX-0006 entra al Area de rodaje.
+06/mayo/2024 | 18:47:49.242843 -> El piloto hace las primeras comprobaciones del avion WX-0006
+06/mayo/2024 | 18:47:49.383618 -> El autobus B-14 recoje a 19 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:49.469482 -> El avion AN-0004 embarca 0 pasajeros.
+06/mayo/2024 | 18:47:49.469482 -> Puerta de embarque 2 del aeropuerto de Madrid liberada.
+06/mayo/2024 | 18:47:49.469482 -> Avion AN-0004 entra al Area de rodaje.
+06/mayo/2024 | 18:47:49.469482 -> El piloto hace las primeras comprobaciones del avion AN-0004
+06/mayo/2024 | 18:47:49.617642 -> El autobus B-21 deja a 42 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:49.671430 -> Avion SB-0003 sale del Area de rodaje.
+06/mayo/2024 | 18:47:49.671430 -> Avion SB-0003 accede a la pista 2
+06/mayo/2024 | 18:47:49.671430 -> El piloto hace las últimas comprobaciones
+06/mayo/2024 | 18:47:50.009566 -> Avion EA-0014 entra al hangar.
+06/mayo/2024 | 18:47:50.010545 -> Avion EA-0014 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:50.010545 -> Avion EA-0014 sale del hangar.
+06/mayo/2024 | 18:47:50.010545 -> Avion EA-0014 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:50.011450 -> Avion EA-0014 accede a la Puerta de Embarque 2
+06/mayo/2024 | 18:47:50.323461 -> El autobus B-17 recoje a 38 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:51.423153 -> El autobus B-16 recoje a 0 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:51.465654 -> El autobus B-19 deja a 17 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:51.638671 -> Avion JR-0015 entra al hangar.
+06/mayo/2024 | 18:47:51.638671 -> Avion JR-0015 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:51.638671 -> Avion JR-0015 sale del hangar.
+06/mayo/2024 | 18:47:51.777736 -> El autobus B-24 deja a 17 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:51.795395 -> Avion AN-0004 sale del Area de rodaje.
+06/mayo/2024 | 18:47:51.795395 -> Avion AN-0004 accede a la pista 2
+06/mayo/2024 | 18:47:51.796384 -> El piloto hace las últimas comprobaciones
+06/mayo/2024 | 18:47:52.056187 -> Pista 1 liberada.
+06/mayo/2024 | 18:47:52.056187 -> Avion KT-0001 accede a la aerovia Barcelona-Madrid
+06/mayo/2024 | 18:47:52.056187 -> Avion KT-0001 volando en Barcelona-Madrid
+06/mayo/2024 | 18:47:52.199483 -> El avion MW-0005 embarca 130 pasajeros.
+06/mayo/2024 | 18:47:52.199483 -> Puerta de embarque 3 del aeropuerto de Barcelona liberada.
+06/mayo/2024 | 18:47:52.199483 -> Avion MW-0005 entra al Area de rodaje.
+06/mayo/2024 | 18:47:52.199483 -> Avion JR-0015 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:52.199483 -> El piloto hace las primeras comprobaciones del avion MW-0005
+06/mayo/2024 | 18:47:52.199483 -> Avion JR-0015 accede a la Puerta de Embarque 3
+06/mayo/2024 | 18:47:52.357664 -> El autobus B-20 deja a 37 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:52.421306 -> El autobus B-18 deja a 50 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:53.379271 -> Avion WX-0006 sale del Area de rodaje.
+06/mayo/2024 | 18:47:53.379271 -> Avion WX-0006 accede a la pista 3
+06/mayo/2024 | 18:47:53.380175 -> El piloto hace las últimas comprobaciones
+06/mayo/2024 | 18:47:53.633927 -> El autobus B-25 deja a 44 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:53.748386 -> El autobus B-22 deja a 31 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:53.761145 -> Avion CF-0016 entra al hangar.
+06/mayo/2024 | 18:47:53.762137 -> Avion CF-0016 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:53.762137 -> Avion CF-0016 sale del hangar.
+06/mayo/2024 | 18:47:53.762137 -> Avion CF-0016 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:53.762137 -> Avion CF-0016 accede a la Puerta de Embarque 3
+06/mayo/2024 | 18:47:53.811417 -> El autobus B-24 recoje a 0 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:53.892852 -> El autobus B-21 recoje a 27 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:53.906431 -> El autobus B-23 deja a 8 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:53.960748 -> Pista 1 liberada.
+06/mayo/2024 | 18:47:53.960748 -> Avion DL-0002 accede a la aerovia Madrid-Barcelona
+06/mayo/2024 | 18:47:53.960748 -> Avion DL-0002 volando en Madrid-Barcelona
+06/mayo/2024 | 18:47:55.017691 -> El autobus B-18 recoje a 0 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:55.042643 -> El autobus B-26 deja a 25 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:55.193868 -> El autobus B-30 deja a 5 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:55.536385 -> El autobus B-27 deja a 7 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:55.604353 -> El autobus B-19 recoje a 6 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:55.797580 -> El avion KC-0007 embarca 35 pasajeros.
+06/mayo/2024 | 18:47:55.797580 -> Puerta de embarque 4 del aeropuerto de Barcelona liberada.
+06/mayo/2024 | 18:47:55.797580 -> Avion KC-0007 entra al Area de rodaje.
+06/mayo/2024 | 18:47:55.797580 -> El piloto hace las primeras comprobaciones del avion KC-0007
+06/mayo/2024 | 18:47:56.041576 -> El autobus B-20 recoje a 5 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:56.295763 -> Pista 2 liberada.
+06/mayo/2024 | 18:47:56.295763 -> Avion SB-0003 accede a la aerovia Barcelona-Madrid
+06/mayo/2024 | 18:47:56.295763 -> Avion SB-0003 volando en Barcelona-Madrid
+06/mayo/2024 | 18:47:56.497965 -> Avion ET-0017 entra al hangar.
+06/mayo/2024 | 18:47:56.497965 -> Avion ET-0017 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:56.497965 -> Avion ET-0017 sale del hangar.
+06/mayo/2024 | 18:47:56.497965 -> Avion ET-0017 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:56.497965 -> Avion ET-0017 accede a la Puerta de Embarque 4
+06/mayo/2024 | 18:47:56.580443 -> Pista 2 liberada.
+06/mayo/2024 | 18:47:56.580443 -> Avion AN-0004 accede a la aerovia Madrid-Barcelona
+06/mayo/2024 | 18:47:56.580443 -> Avion AN-0004 volando en Madrid-Barcelona
+06/mayo/2024 | 18:47:56.618325 -> El avion FJ-0008 embarca 47 pasajeros.
+06/mayo/2024 | 18:47:56.618325 -> Puerta de embarque 4 del aeropuerto de Madrid liberada.
+06/mayo/2024 | 18:47:56.618325 -> Avion FJ-0008 entra al Area de rodaje.
+06/mayo/2024 | 18:47:56.618325 -> El piloto hace las primeras comprobaciones del avion FJ-0008
+06/mayo/2024 | 18:47:56.745419 -> El autobus B-23 recoje a 0 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:56.842729 -> Avion MW-0005 sale del Area de rodaje.
+06/mayo/2024 | 18:47:56.842729 -> Avion MW-0005 accede a la pista 1
+06/mayo/2024 | 18:47:56.842729 -> El piloto hace las últimas comprobaciones
+06/mayo/2024 | 18:47:57.120844 -> El avion BT-0011 embarca 46 pasajeros.
+06/mayo/2024 | 18:47:57.120844 -> Puerta de embarque 1 del aeropuerto de Barcelona liberada.
+06/mayo/2024 | 18:47:57.120844 -> Avion BT-0011 entra al Area de rodaje.
+06/mayo/2024 | 18:47:57.120844 -> El piloto hace las primeras comprobaciones del avion BT-0011
+06/mayo/2024 | 18:47:57.749835 -> El autobus B-28 deja a 8 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:57.855887 -> El autobus B-31 deja a 25 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:58.022767 -> Pista 3 liberada.
+06/mayo/2024 | 18:47:58.022767 -> Avion WX-0006 accede a la aerovia Madrid-Barcelona
+06/mayo/2024 | 18:47:58.022767 -> Avion WX-0006 volando en Madrid-Barcelona
+06/mayo/2024 | 18:47:58.138629 -> El autobus B-22 recoje a 1 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:58.351298 -> El autobus B-30 recoje a 5 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:58.539346 -> El autobus B-25 recoje a 0 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:58.611785 -> El autobus B-2 deja a 19 en el aeropuerto Madrid
+06/mayo/2024 | 18:47:58.752779 -> El autobus B-29 deja a 1 en el aeropuerto Barcelona
+06/mayo/2024 | 18:47:58.772419 -> Avion GS-0018 entra al hangar.
+06/mayo/2024 | 18:47:58.773419 -> Avion GS-0018 entra al Area de estacionamiento.
+06/mayo/2024 | 18:47:58.773419 -> Avion GS-0018 sale del hangar.
+06/mayo/2024 | 18:47:58.773419 -> Avion GS-0018 sale del Area de estacionamiento.
+06/mayo/2024 | 18:47:58.773419 -> Avion GS-0018 accede a la Puerta de Embarque 4
+06/mayo/2024 | 18:47:59.299371 -> El autobus B-27 recoje a 0 en el aeropuerto Barcelona
+06/mayo/2024 | 18:48:00.029557 -> El autobus B-26 recoje a 0 en el aeropuerto Madrid
+06/mayo/2024 | 18:48:00.156627 -> El autobus B-28 recoje a 0 en el aeropuerto Madrid
+06/mayo/2024 | 18:48:00.408700 -> El autobus B-31 recoje a 0 en el aeropuerto Barcelona
+06/mayo/2024 | 18:48:00.453084 -> Avion XP-0019 entra al hangar.
+06/mayo/2024 | 18:48:00.453084 -> Avion XP-0019 entra al Area de estacionamiento.
+06/mayo/2024 | 18:48:00.453084 -> Avion XP-0019 sale del hangar.
+06/mayo/2024 | 18:48:00.454063 -> Avion XP-0019 sale del Area de estacionamiento.
+06/mayo/2024 | 18:48:00.454063 -> Avion XP-0019 accede a la Puerta de Embarque 1
+06/mayo/2024 | 18:48:00.460605 -> Avion KC-0007 sale del Area de rodaje.
+06/mayo/2024 | 18:48:00.460605 -> Avion KC-0007 accede a la pista 2
+06/mayo/2024 | 18:48:00.460605 -> El piloto hace las últimas comprobaciones
+06/mayo/2024 | 18:48:00.656448 -> Pista 1 liberada.
+06/mayo/2024 | 18:48:00.656448 -> Avion MW-0005 accede a la aerovia Barcelona-Madrid
+06/mayo/2024 | 18:48:00.656448 -> Avion MW-0005 volando en Barcelona-Madrid
+06/mayo/2024 | 18:48:00.948315 -> El autobus B-3 deja a 24 en el aeropuerto Barcelona
+06/mayo/2024 | 18:48:01.031016 -> Avion FJ-0008 sale del Area de rodaje.
+06/mayo/2024 | 18:48:01.031016 -> Avion FJ-0008 accede a la pista 1
+06/mayo/2024 | 18:48:01.031016 -> El piloto hace las últimas comprobaciones
+06/mayo/2024 | 18:48:01.158386 -> El autobus B-1 deja a 41 en el aeropuerto Barcelona
+06/mayo/2024 | 18:48:01.297485 -> El autobus B-2 recoje a 0 en el aeropuerto Madrid
+06/mayo/2024 | 18:48:01.418535 -> El autobus B-29 recoje a 31 en el aeropuerto Barcelona
+06/mayo/2024 | 18:48:01.442334 -> Avion BT-0011 sale del Area de rodaje.
+06/mayo/2024 | 18:48:01.442334 -> Avion BT-0011 accede a la pista 1
+06/mayo/2024 | 18:48:01.442334 -> El piloto hace las últimas comprobaciones
+06/mayo/2024 | 18:48:01.747575 -> Avion FM-0020 entra al hangar.
+06/mayo/2024 | 18:48:01.747575 -> Avion FM-0020 entra al Area de estacionamiento.
+06/mayo/2024 | 18:48:01.747575 -> Avion FM-0020 sale del hangar.
+06/mayo/2024 | 18:48:01.857570 -> El autobus B-34 deja a 27 en el aeropuerto Madrid
+06/mayo/2024 | 18:48:02.165134 -> El avion RL-0010 embarca 38 pasajeros.
+06/mayo/2024 | 18:48:02.165134 -> Puerta de embarque 5 del aeropuerto de Madrid liberada.
+06/mayo/2024 | 18:48:02.165134 -> Avion FM-0020 sale del Area de estacionamiento.
+06/mayo/2024 | 18:48:02.165134 -> Avion RL-0010 entra al Area de rodaje.
+06/mayo/2024 | 18:48:02.165134 -> Avion FM-0020 accede a la Puerta de Embarque 5
+06/mayo/2024 | 18:48:02.166046 -> El piloto hace las primeras comprobaciones del avion RL-0010
+06/mayo/2024 | 18:48:02.331473 -> El autobus B-33 deja a 38 en el aeropuerto Barcelona
+06/mayo/2024 | 18:48:02.515736 -> El autobus B-35 deja a 20 en el aeropuerto Barcelona
+06/mayo/2024 | 18:48:02.587724 -> El autobus B-32 deja a 7 en el aeropuerto Madrid
+06/mayo/2024 | 18:48:02.687367 -> El autobus B-4 deja a 29 en el aeropuerto Madrid
+06/mayo/2024 | 18:48:03.046442 -> El autobus B-3 recoje a 21 en el aeropuerto Barcelona
+06/mayo/2024 | 18:48:03.255630 -> El avion PU-0009 embarca 0 pasajeros.
+06/mayo/2024 | 18:48:03.255630 -> Puerta de embarque 5 del aeropuerto de Barcelona liberada.
+06/mayo/2024 | 18:48:03.255630 -> Avion PU-0009 entra al Area de rodaje.
+06/mayo/2024 | 18:48:03.255630 -> El piloto hace las primeras comprobaciones del avion PU-0009
+06/mayo/2024 | 18:48:03.871596 -> El autobus B-0 deja a 1 en el aeropuerto Madrid
+06/mayo/2024 | 18:48:04.068291 -> El autobus B-7 deja a 17 en el aeropuerto Barcelona
+06/mayo/2024 | 18:48:04.075318 -> Avion YN-0021 entra al hangar.
+06/mayo/2024 | 18:48:04.076295 -> Avion YN-0021 entra al Area de estacionamiento.
+06/mayo/2024 | 18:48:04.076295 -> Avion YN-0021 sale del hangar.
+06/mayo/2024 | 18:48:04.076295 -> Avion YN-0021 sale del Area de estacionamiento.
+06/mayo/2024 | 18:48:04.076295 -> Avion YN-0021 accede a la Puerta de Embarque 5
+06/mayo/2024 | 18:48:04.185394 -> Avion RL-0010 sale del Area de rodaje.
+06/mayo/2024 | 18:48:04.185394 -> Avion RL-0010 accede a la pista 2
+06/mayo/2024 | 18:48:04.185394 -> El piloto hace las últimas comprobaciones
+06/mayo/2024 | 18:48:04.427419 -> El autobus B-11 deja a 16 en el aeropuerto Barcelona

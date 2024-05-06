@@ -1,18 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Cliente;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import javax.swing.JTextField;
 
-/**
- *
- * @author Manuel
- */
 public class Pantalla extends javax.swing.JFrame {
 
     /**
@@ -20,6 +13,7 @@ public class Pantalla extends javax.swing.JFrame {
      */
     public Pantalla() {
         initComponents();
+
     }
     
     public void enviar(int envio) {
@@ -34,8 +28,22 @@ public class Pantalla extends javax.swing.JFrame {
             
             salida.writeInt(envio);
             int vuelta = entrada.readInt();
+            String texto = entrada.readUTF();
             
-            
+            switch(envio){
+                case 1: getPasajerosM().setText(String.valueOf(vuelta)); break;
+                case 2: getPasajerosB().setText(String.valueOf(vuelta)); break;
+                case 3: getHangarTextFieldM().setText(String.valueOf(vuelta)); break;
+                case 4: getHangarTextFieldB().setText(String.valueOf(vuelta)); break;
+                case 5: getTallerTextFieldM().setText(String.valueOf(vuelta)); break;
+                case 6: getTallerTextFieldB().setText(String.valueOf(vuelta)); break;
+                case 7: getEstacioanmientoTextFieldM().setText(String.valueOf(vuelta)); break;
+                case 8: getEstacioanmientoTextFieldB().setText(String.valueOf(vuelta)); break;      
+                case 9: getRodajeTextFieldM().setText(String.valueOf(vuelta)); break;
+                case 10: getRodajeTextFieldB().setText(String.valueOf(vuelta)); break;
+                case 11: getAerBMTextField12().setText(String.valueOf(texto)); break;
+                case 12: getAerMBTextField11().setText(String.valueOf(texto)); 
+            }
             
             entrada.close();
             salida.close();
@@ -44,7 +52,6 @@ public class Pantalla extends javax.swing.JFrame {
             System.out.println(e.toString());
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,6 +61,24 @@ public class Pantalla extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        pasajerosB = new javax.swing.JTextField();
+        jButton16 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        aerMBTextField11 = new javax.swing.JTextField();
+        aerBMTextField12 = new javax.swing.JTextField();
+        hangarTextFieldM = new javax.swing.JTextField();
+        tallerTextFieldM = new javax.swing.JTextField();
+        estacioanmientoTextFieldM = new javax.swing.JTextField();
+        rodajeTextFieldM = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -62,16 +87,6 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         pasajerosM = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -80,30 +95,72 @@ public class Pantalla extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jTextField6 = new javax.swing.JTextField();
+        hangarTextFieldB = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        tallerTextFieldB = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        estacioanmientoTextFieldB = new javax.swing.JTextField();
         jButton13 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        rodajeTextFieldB = new javax.swing.JTextField();
         jButton14 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jButton15 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        pasajerosB = new javax.swing.JTextField();
-        jButton16 = new javax.swing.JButton();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
+        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+
+        jLabel19.setText("Pista 3");
+
+        jLabel20.setText("Pista 4");
+
+        pasajerosB.setEditable(false);
+
+        jButton16.setText("Cerrar");
+
+        jLabel21.setText("Aerovía Madrid-Barcelona");
+
+        jLabel22.setText("Aerovía Barcelona-Madrid");
+
+        aerMBTextField11.setEditable(false);
+
+        aerBMTextField12.setEditable(false);
+
+        hangarTextFieldM.setEditable(false);
+
+        tallerTextFieldM.setEditable(false);
+        tallerTextFieldM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tallerTextFieldMActionPerformed(evt);
+            }
+        });
+
+        estacioanmientoTextFieldM.setEditable(false);
+
+        rodajeTextFieldM.setEditable(false);
+
+        jLabel8.setText("Pista 1");
+
+        jLabel9.setText("Pista 2");
+
+        jLabel10.setText("Pista 3");
+
+        jLabel11.setText("Pista 4");
+
+        jButton1.setText("Cerrar");
+
+        jButton2.setText("Abrir");
 
         jLabel1.setText("Aeropuerto de Madrid");
 
@@ -119,23 +176,12 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel7.setText("Nº de aviones en Área Rodaje: ");
 
+        pasajerosM.setEditable(false);
         pasajerosM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pasajerosMActionPerformed(evt);
             }
         });
-
-        jLabel8.setText("Pista 1");
-
-        jLabel9.setText("Pista 2");
-
-        jLabel10.setText("Pista 3");
-
-        jLabel11.setText("Pista 4");
-
-        jButton1.setText("Cerrar");
-
-        jButton2.setText("Abrir");
 
         jButton3.setText("Abrir");
 
@@ -153,17 +199,25 @@ public class Pantalla extends javax.swing.JFrame {
 
         jButton10.setText("Abrir");
 
+        hangarTextFieldB.setEditable(false);
+
         jButton11.setText("Cerrar");
 
         jLabel12.setText("Nº de aviones en Aeropuerto:");
+
+        tallerTextFieldB.setEditable(false);
 
         jButton12.setText("Abrir");
 
         jLabel13.setText("Nº de aviones en Hangar: ");
 
+        estacioanmientoTextFieldB.setEditable(false);
+
         jButton13.setText("Cerrar");
 
         jLabel14.setText("Nº de aviones en Taller: ");
+
+        rodajeTextFieldB.setEditable(false);
 
         jButton14.setText("Abrir");
 
@@ -177,85 +231,85 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel18.setText("Pista 2");
 
-        jLabel19.setText("Pista 3");
+        jButton17.setText("Consultar");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
-        jLabel20.setText("Pista 4");
+        jButton18.setText("Consultar");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
 
-        jButton16.setText("Cerrar");
-
-        jLabel21.setText("Aerovía Madrid-Barcelona");
-
-        jLabel22.setText("Aerovía Barcelona-Madrid");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(402, 402, 402)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel21))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField11)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(pasajerosM))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(hangarTextFieldM))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(tallerTextFieldM))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(estacioanmientoTextFieldM))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(rodajeTextFieldM))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel9)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(pasajerosM))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
+                                    .addComponent(jButton3))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField2))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField3))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
+                                    .addComponent(jButton2)))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel10)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField4))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
+                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField5))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel9)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jButton3))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel8)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jButton2)))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel10)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jButton5))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel11)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jButton7)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(135, 135, 135)
-                                .addComponent(jLabel1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                                    .addComponent(jButton5))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel11)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButton7))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(160, 160, 160)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
@@ -268,19 +322,19 @@ public class Pantalla extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel13)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField6))
+                                    .addComponent(hangarTextFieldB))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel14)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField7))
+                                    .addComponent(tallerTextFieldB))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel15)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField8))
+                                    .addComponent(estacioanmientoTextFieldB))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel17)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField9))
+                                    .addComponent(rodajeTextFieldB))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(layout.createSequentialGroup()
@@ -308,9 +362,28 @@ public class Pantalla extends javax.swing.JFrame {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jButton14)))))))
-                    .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(26, 26, 26))
+                                            .addComponent(jButton14))))))
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(177, 177, 177))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(aerMBTextField11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
+                            .addComponent(aerBMTextField12)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(414, 414, 414)
+                                .addComponent(jLabel21))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(410, 410, 410)
+                                .addComponent(jLabel22)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,19 +401,19 @@ public class Pantalla extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(hangarTextFieldM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tallerTextFieldM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(estacioanmientoTextFieldM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(rodajeTextFieldM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
@@ -364,19 +437,19 @@ public class Pantalla extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(hangarTextFieldB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tallerTextFieldB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(estacioanmientoTextFieldB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(rodajeTextFieldB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
@@ -393,24 +466,113 @@ public class Pantalla extends javax.swing.JFrame {
                             .addComponent(jButton10)
                             .addComponent(jButton15)
                             .addComponent(jButton14))))
-                .addGap(34, 34, 34)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton18)
+                    .addComponent(jButton17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
+                .addComponent(aerMBTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel22)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(8, 8, 8)
+                .addComponent(aerBMTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void pasajerosMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasajerosMActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pasajerosMActionPerformed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+
+    }//GEN-LAST:event_formComponentShown
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        enviar(1);
+        enviar(3);
+        enviar(5);
+        enviar(7);
+        enviar(9);
+        enviar(11);
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void tallerTextFieldMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tallerTextFieldMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tallerTextFieldMActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        enviar(2);
+        enviar(4);
+        enviar(6);
+        enviar(8);
+        enviar(10);
+        enviar(12);
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+ 
+    public JTextField getPasajerosB() {
+        return pasajerosB;
+    }
+
+    public JTextField getPasajerosM() {
+        return pasajerosM;
+    }
+
+    public JTextField getAerBMTextField12() {
+        return aerBMTextField12;
+    }
+
+    public JTextField getAerMBTextField11() {
+        return aerMBTextField11;
+    }
+
+    public JTextField getEstacioanmientoTextFieldB() {
+        return estacioanmientoTextFieldB;
+    }
+
+    public JTextField getEstacioanmientoTextFieldM() {
+        return estacioanmientoTextFieldM;
+    }
+
+    public JTextField getHangarTextFieldB() {
+        return hangarTextFieldB;
+    }
+
+    public JTextField getHangarTextFieldM() {
+        return hangarTextFieldM;
+    }
+
+    public JTextField getRodajeTextFieldB() {
+        return rodajeTextFieldB;
+    }
+
+    public JTextField getRodajeTextFieldM() {
+        return rodajeTextFieldM;
+    }
+
+    public JTextField getTallerTextFieldB() {
+        return tallerTextFieldB;
+    }
+
+    public JTextField getTallerTextFieldM() {
+        return tallerTextFieldM;
+    }
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField aerBMTextField12;
+    private javax.swing.JTextField aerMBTextField11;
+    private javax.swing.JTextField estacioanmientoTextFieldB;
+    private javax.swing.JTextField estacioanmientoTextFieldM;
+    private javax.swing.JTextField hangarTextFieldB;
+    private javax.swing.JTextField hangarTextFieldM;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -419,6 +581,8 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -449,17 +613,11 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField pasajerosB;
     private javax.swing.JTextField pasajerosM;
+    private javax.swing.JTextField rodajeTextFieldB;
+    private javax.swing.JTextField rodajeTextFieldM;
+    private javax.swing.JTextField tallerTextFieldB;
+    private javax.swing.JTextField tallerTextFieldM;
     // End of variables declaration//GEN-END:variables
 }
