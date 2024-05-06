@@ -15,7 +15,7 @@ public class Escritor {
     public Escritor() {
         try {
             // Crea el FileWriter para el archivo "aeropuerto.txt"
-            fw = new FileWriter("aeropuerto.txt");
+            fw = new FileWriter("evolucionAeropuerto.txt");
             
         } catch (IOException ioe) {
             System.out.println("Problema en Escritor");
@@ -29,7 +29,7 @@ public class Escritor {
     public synchronized void escribir(String str) {
         try {
             // Obtiene la fecha y hora actual formateada
-            String segundo = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MMMM/yyyy | HH:mm:ss.SSSSSS"));
+            String segundo = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MMMM/yyyy | HH:mm:ss"));
 
             // Escribe el evento en el archivo de registro junto con la fecha y hora
             System.out.println(str);

@@ -113,6 +113,7 @@ public class Avion extends Thread {
                 //se solicita acceso a pista y entra
                 nPista = aerOrigen.accederPista(this);
                 paso.mirar();
+                
                 //despegue
                 Thread.sleep(1000 + r.nextInt(4001));
                 

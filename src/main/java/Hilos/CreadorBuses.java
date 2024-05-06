@@ -32,10 +32,12 @@ public class CreadorBuses extends Thread{
                 // Crea un autobús y lo inicia alternando entre los aeropuertos de Madrid y Barcelona
                 if(i%2==0){
                     Autobus a = new Autobus("B-"+i, aerM, paso, pantalla, escritor);
+                    escritor.escribir("Autobus " + "B-"+i + " es creado");
                     a.start();
                 }
                 else{
                     Autobus a = new Autobus("B-"+i, aerB, paso, pantalla, escritor);
+                    escritor.escribir("Autobus " + "B-"+i + " es creado");
                     a.start();
                 }
                 

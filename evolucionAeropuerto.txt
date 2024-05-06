@@ -1,0 +1,25 @@
+06/mayo/2024 | 19:08:36 -> Autobus B-0 es creado
+06/mayo/2024 | 19:08:36 -> Avion MO-0001 es creado
+06/mayo/2024 | 19:08:36 -> Avion MO-0001 entra al hangar.
+06/mayo/2024 | 19:08:36 -> Avion MO-0001 entra al Area de estacionamiento.
+06/mayo/2024 | 19:08:36 -> Avion MO-0001 sale del hangar.
+06/mayo/2024 | 19:08:36 -> Avion MO-0001 sale del Area de estacionamiento.
+06/mayo/2024 | 19:08:36 -> Avion MO-0001 accede a la Puerta de Embarque 1
+06/mayo/2024 | 19:08:37 -> Autobus B-1 es creado
+06/mayo/2024 | 19:08:38 -> Autobus B-2 es creado
+06/mayo/2024 | 19:08:38 -> Avion MY-0002 es creado
+06/mayo/2024 | 19:08:38 -> Avion MY-0002 entra al hangar.
+06/mayo/2024 | 19:08:38 -> Avion MY-0002 entra al Area de estacionamiento.
+06/mayo/2024 | 19:08:38 -> Avion MY-0002 sale del hangar.
+06/mayo/2024 | 19:08:38 -> Avion MY-0002 sale del Area de estacionamiento.
+06/mayo/2024 | 19:08:38 -> Avion MY-0002 accede a la Puerta de Embarque 1
+06/mayo/2024 | 19:08:39 -> Autobus B-3 es creado
+06/mayo/2024 | 19:08:39 -> Autobus B-4 es creado
+06/mayo/2024 | 19:08:40 -> Autobus B-5 es creado
+06/mayo/2024 | 19:08:41 -> Avion WZ-0003 es creado
+06/mayo/2024 | 19:08:41 -> Avion WZ-0003 entra al hangar.
+06/mayo/2024 | 19:08:41 -> Avion WZ-0003 entra al Area de estacionamiento.
+06/mayo/2024 | 19:08:41 -> Avion WZ-0003 sale del hangar.
+06/mayo/2024 | 19:08:41 -> Avion WZ-0003 sale del Area de estacionamiento.
+06/mayo/2024 | 19:08:41 -> Avion WZ-0003 accede a la Puerta de Embarque 2
+06/mayo/2024 | 19:08:41 -> Autobus B-6 es creado

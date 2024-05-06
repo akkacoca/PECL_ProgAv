@@ -424,11 +424,11 @@ public class Aeropuerto {
         
         if (tipoRevision.equals("profunda")){
             Thread.sleep(r.nextInt(5001) + 5000);
-            escritor.escribir("Avion " + avion.getID() + " esta haciendo la revision en el taller.");
+            escritor.escribir("Avion " + avion.getID() + " esta haciendo la revision en profundidad en el taller.");
         }
         else if (tipoRevision.equals("rapida")){
             Thread.sleep(r.nextInt(4001) + 1000);
-            escritor.escribir("Avion " + avion.getID() + " esta haciendo la revision en el taller.");
+            escritor.escribir("Avion " + avion.getID() + " esta haciendo la revision rapida en el taller.");
         }
         paso.mirar();
         

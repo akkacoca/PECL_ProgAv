@@ -43,9 +43,11 @@ public class CreadorAviones extends Thread{
                 // Crea un avión y lo inicia alternando entre los aeropuertos de Madrid y Barcelona
                 if (i % 2 == 0) {
                     Avion a = new Avion(id, aerM, aerB, AreoviaMB, AreoviaBM, escritor, paso);
+                    escritor.escribir("Avion " + id + " es creado");
                     a.start();
                 } else {
                     Avion a = new Avion(id, aerB, aerM, AreoviaMB, AreoviaBM, escritor, paso);
+                    escritor.escribir("Avion " + id + " es creado");
                     a.start();
                 }
                 try {
@@ -54,6 +56,7 @@ public class CreadorAviones extends Thread{
                 } catch (InterruptedException ex) {
                     System.out.println("Problema en CreadorAviones");
                 }
+                
             } catch (InterruptedException ex) {
                 Logger.getLogger(CreadorAviones.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -93,10 +93,10 @@ public class PuertaEmbarque {
             
             // Simulamos el tiempo de embarque
             paso.mirar();
-            Thread.sleep(random.nextInt(3000) + 1000);
+            Thread.sleep(random.nextInt(2001) + 1000);
             // Simulamos la espera para embarcar más pasajeros
             paso.mirar();
-            Thread.sleep(random.nextInt(5000) + 1000);
+            Thread.sleep(random.nextInt(4001) + 1000);
             intentos++;
             paso.mirar();
         }
@@ -114,7 +114,7 @@ public class PuertaEmbarque {
         
         paso.mirar();
         // Simulamos el tiempo de desembarque
-        Thread.sleep(random.nextInt(5000) + 1000); 
+        Thread.sleep(random.nextInt(4001) + 1000); 
         paso.mirar();
         return pasajerosTransferidos;
     }

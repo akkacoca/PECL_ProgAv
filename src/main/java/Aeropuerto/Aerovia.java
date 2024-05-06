@@ -39,6 +39,6 @@ public class Aerovia {
         paso.mirar();
         
         aviones.remove(avion.getID());
-        escritor.escribir("Avion " + avion.getID() + " sale de la aerovia." + getNombre());
+        escritor.escribir("Avion " + avion.getID() + " sale de la aerovia " + getNombre());
     }
 }
