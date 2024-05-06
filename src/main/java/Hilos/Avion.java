@@ -125,7 +125,7 @@ public class Avion extends Thread {
                 this.TipoOperacion = "desembarque";
                 paso.mirar();
                 //VUELO
-                escritor.escribir("Avion " + this.id + " volando en " + AeroviaActual.getNombre());
+                escritor.escribir("Avion " + this.id + "(" + this.pasajeros + ") " + " volando en " + AeroviaActual.getNombre());
                 paso.mirar();
                 Thread.sleep(15000 + r.nextInt(30001));
 
@@ -135,7 +135,7 @@ public class Avion extends Thread {
                 paso.mirar();
                 Thread.sleep(1000 + r.nextInt(4001));
                 paso.mirar();
-                escritor.escribir("Avion " + this.id + " ha aterrizado en la pista " + nPista); 
+                escritor.escribir("Avion " + this.id + "(" + this.pasajeros + ") " + " ha aterrizado en la pista " + nPista); 
 
 
                 // Pasa al area de rodaje
@@ -148,7 +148,7 @@ public class Avion extends Thread {
                 
                 // Accede al area de estacionamiento
                 aerDestino.pasarAreaE(this);
-                escritor.escribir("El piloto hace las comprobaciones a la llegada del avion " + this.id);
+                escritor.escribir("El piloto hace las comprobaciones a la llegada del avion " + this.id + "(" + this.pasajeros + ") ");
                 paso.mirar();
                 Thread.sleep(1000 + r.nextInt(4001));
                 paso.mirar();

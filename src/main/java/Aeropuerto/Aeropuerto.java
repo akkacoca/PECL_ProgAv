@@ -313,7 +313,7 @@ public class Aeropuerto {
                             else {this.pantalla.getAeroviaBMTextField().setText(ArrayListToString(aerovia.getAviones()));}
                         }
                         
-                        escritor.escribir("Avion " + avion.getID() + " accede a la pista " + pista.getNumero());
+                        escritor.escribir("Avion " + avion.getID() + "(" + avion.getPasajeros() + ") " + " accede a la pista " + pista.getNumero());
 
                         switch (pista.getNumero()){
                             case 1: if (this.nombre == "Madrid"){
@@ -347,7 +347,7 @@ public class Aeropuerto {
                 }     
             }
             if(avion.getTipoOperacion().equals("desembarque")){
-                escritor.escribir("El avion " + avion.getID() + " no ha podido conseguir pista, da un rodeo.");
+                escritor.escribir("El avion " + avion.getID() + "(" + avion.getPasajeros() + ") " + " no ha podido conseguir pista, da un rodeo.");
                 Thread.sleep(1000+ r.nextInt(4001));
             }
         }

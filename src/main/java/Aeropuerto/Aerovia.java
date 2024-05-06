@@ -31,7 +31,7 @@ public class Aerovia {
         paso.mirar();
         
         aviones.add(avion.getID() + "(" + avion.getPasajeros() + ")");
-        escritor.escribir("Avion " + avion.getID() + " accede a la aerovia " + getNombre());
+        escritor.escribir("Avion " + avion.getID() + "(" + avion.getPasajeros() + ") " + " accede a la aerovia " + getNombre());
     }
     
     // Método para que un avión salga de la aerovía
@@ -39,6 +39,6 @@ public class Aerovia {
         paso.mirar();
         
         aviones.remove(avion.getID());
-        escritor.escribir("Avion " + avion.getID() + " sale de la aerovia " + getNombre());
+        escritor.escribir("Avion " + avion.getID() + "(" + avion.getPasajeros() + ") " + " sale de la aerovia " + getNombre());
     }
 }

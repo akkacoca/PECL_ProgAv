@@ -18,35 +18,35 @@ public class Pantalla extends javax.swing.JFrame {
     
     public void enviar(int envio) {
         Socket cliente;
-        DataInputStream entrada;
-        DataOutputStream salida;
+        DataInputStream entradaC;
+        DataOutputStream salidaC;
         
         try {
             cliente = new Socket("localhost", 5000);
-            entrada = new DataInputStream(cliente.getInputStream());
-            salida = new DataOutputStream(cliente.getOutputStream());
+            entradaC = new DataInputStream(cliente.getInputStream());
+            salidaC = new DataOutputStream(cliente.getOutputStream());
             
-            salida.writeInt(envio);
-            int vuelta = entrada.readInt();
-            String texto = entrada.readUTF();
+            salidaC.writeInt(envio);
+            int respuesta = entradaC.readInt();
+            String respuestaTexto = entradaC.readUTF();
             
             switch(envio){
-                case 1: getPasajerosM().setText(String.valueOf(vuelta)); break;
-                case 2: getPasajerosB().setText(String.valueOf(vuelta)); break;
-                case 3: getHangarTextFieldM().setText(String.valueOf(vuelta)); break;
-                case 4: getHangarTextFieldB().setText(String.valueOf(vuelta)); break;
-                case 5: getTallerTextFieldM().setText(String.valueOf(vuelta)); break;
-                case 6: getTallerTextFieldB().setText(String.valueOf(vuelta)); break;
-                case 7: getEstacioanmientoTextFieldM().setText(String.valueOf(vuelta)); break;
-                case 8: getEstacioanmientoTextFieldB().setText(String.valueOf(vuelta)); break;      
-                case 9: getRodajeTextFieldM().setText(String.valueOf(vuelta)); break;
-                case 10: getRodajeTextFieldB().setText(String.valueOf(vuelta)); break;
-                case 11: getAerBMTextField12().setText(String.valueOf(texto)); break;
-                case 12: getAerMBTextField11().setText(String.valueOf(texto)); 
+                case 1: getPasajerosM().setText(String.valueOf(respuesta)); break;
+                case 2: getPasajerosB().setText(String.valueOf(respuesta)); break;
+                case 3: getHangarTextFieldM().setText(String.valueOf(respuesta)); break;
+                case 4: getHangarTextFieldB().setText(String.valueOf(respuesta)); break;
+                case 5: getTallerTextFieldM().setText(String.valueOf(respuesta)); break;
+                case 6: getTallerTextFieldB().setText(String.valueOf(respuesta)); break;
+                case 7: getEstacioanmientoTextFieldM().setText(String.valueOf(respuesta)); break;
+                case 8: getEstacioanmientoTextFieldB().setText(String.valueOf(respuesta)); break;      
+                case 9: getRodajeTextFieldM().setText(String.valueOf(respuesta)); break;
+                case 10: getRodajeTextFieldB().setText(String.valueOf(respuesta)); break;
+                case 11: getAerBMTextField12().setText(String.valueOf(respuestaTexto)); break;
+                case 12: getAerMBTextField11().setText(String.valueOf(respuestaTexto)); 
             }
             
-            entrada.close();
-            salida.close();
+            entradaC.close();
+            salidaC.close();
             cliente.close();
         } catch (IOException e) {
             System.out.println(e.toString());

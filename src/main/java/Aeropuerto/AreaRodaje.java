@@ -25,7 +25,7 @@ public class AreaRodaje {
         paso.mirar();
         
         aviones.add(avion.getID() + "(" + avion.getPasajeros() + ")" );
-        escritor.escribir("Avion " + avion.getID() + " entra al Area de rodaje.");
+        escritor.escribir("Avion " + avion.getID() + "(" + avion.getPasajeros() + ") " + " entra al Area de rodaje.");
     }
     
     // Método para que un avión salga del área de rodaje
@@ -33,6 +33,6 @@ public class AreaRodaje {
         paso.mirar();
         
         aviones.remove(avion.getID());
-        escritor.escribir("Avion " + avion.getID() + " sale del Area de rodaje.");
+        escritor.escribir("Avion " + avion.getID() + "(" + avion.getPasajeros() + ") " + " sale del Area de rodaje.");
     }
 }
