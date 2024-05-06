@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Cliente;
 
 import java.io.DataInputStream;
@@ -10,10 +6,6 @@ import java.io.IOException;
 import java.net.Socket;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Manuel
- */
 public class Pantalla2 extends javax.swing.JFrame {
 
     /**
