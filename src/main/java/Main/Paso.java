@@ -8,14 +8,12 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Paso {
     
     private boolean cerrado;
-    private final Lock cerrojo;
-    private final Condition parar;
+    private final Lock cerrojo; // Cerrojo para la exclusión mutua
+    private final Condition parar; // Condición para pausar el flujo de ejecución
     
-    /**
-     * Variable compartida para pausar el flujo de ejecucion de todas las funcionalidades del campamento
-     */
+    
     public Paso() {
-        cerrado = false;
+        cerrado = false; // Inicialmente el paso está abierto
         cerrojo = new ReentrantLock();
         parar = cerrojo.newCondition();
     }
@@ -25,11 +23,12 @@ public class Paso {
      * @throws InterruptedException 
      */
     public void mirar() throws InterruptedException {
-        cerrojo.lock();
+        cerrojo.lock(); // Adquiere el cerrojo para garantizar la exclusión mutua
         try {
-            while(cerrado) parar.await();
+            while(cerrado) // Mientras el paso esté cerrado
+                parar.await(); // El hilo espera en la condición de pausa
         } finally {
-            cerrojo.unlock();
+            cerrojo.unlock(); // Libera el cerrojo después de la espera
         }
     }
     
@@ -37,12 +36,14 @@ public class Paso {
      * Funcion que desbloquea a todos los hilos que estaban bloqueados en mirar()
      */
     public void abrir() {
-        cerrojo.lock();
+        cerrojo.lock(); // Adquiere el cerrojo para garantizar la exclusión mutua
         try {
-            cerrado = false;
+            // Establece la variable cerrado como false, indicando que el paso está abierto
+            cerrado = false; 
+            // Despierta a todos los hilos que están esperando en la condición de pausa
             parar.signalAll();
         } finally {
-            cerrojo.unlock();
+            cerrojo.unlock(); // Libera el cerrojo después de la señalización
         }
     }
     
@@ -50,10 +51,12 @@ public class Paso {
      * Funcion que pone a true la variable booleana para empezar a bloquear a los nuevos hilos que lleguen
      */
     public void cerrar() {
-        cerrojo.lock();
+        cerrojo.lock(); // Adquiere el cerrojo para garantizar la exclusión mutua
         try {
+            // Establece la variable cerrado como true, indicando que el paso está cerrado
             cerrado = true;
         } finally {
+            // Libera el cerrojo después de establecer el paso como cerrado
             cerrojo.unlock();
         }
     }
